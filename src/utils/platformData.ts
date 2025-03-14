@@ -1,0 +1,76 @@
+
+// Sample data for German dating platforms for 40+ 
+export const platforms = [
+  {
+    id: 'parship',
+    name: 'Parship',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8f/PARSHIP_2017_logo.svg',
+    rating: 4.7,
+    userCount: '5+ Millionen',
+    ageGroup: '40-65 Jahre',
+    description: 'Parship ist eine der führenden Online-Partnervermittlungen in Deutschland mit einem wissenschaftlich fundierten Matching-Verfahren. Besonders beliebt bei Singles ab 40, die eine langfristige Beziehung suchen.',
+    pricing: '39,90€/Monat',
+    features: ['Wissenschaftlicher Persönlichkeitstest', 'Hohe Erfolgsquote', 'Seriöse Singles', 'ID-Check', 'Diskrete Partnersuche'],
+    badge: 'Testsieger',
+    color: 'bg-amber-500'
+  },
+  {
+    id: 'elitepartner',
+    name: 'ElitePartner',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/ElitePartner.png',
+    rating: 4.5,
+    userCount: '3+ Millionen',
+    ageGroup: '40-65 Jahre',
+    description: 'ElitePartner richtet sich an Akademiker und Singles mit Niveau. Die Plattform ist bekannt für ihre hochwertigen Profile und eine sehr gute Matching-Qualität für anspruchsvolle Singles ab 40.',
+    pricing: '37,90€/Monat',
+    features: ['Akademiker & Singles mit Niveau', 'Fundierter Persönlichkeitstest', 'Hoher Bildungsgrad', 'Persönlicher Service', 'Hohe Qualitätsstandards'],
+    badge: 'Premium',
+    color: 'bg-blue-500'
+  },
+  {
+    id: 'zweisam',
+    name: 'Zweisam',
+    logo: 'https://beziehungsratgeber.net/wp-content/uploads/2019/08/zweisam_logo.png',
+    rating: 4.3,
+    userCount: '2+ Millionen',
+    ageGroup: '50+ Jahre',
+    description: 'Zweisam ist speziell für die Generation 50+ konzipiert. Die Plattform bietet eine intuitive Bedienung und fokussiert sich auf die Bedürfnisse älterer Singles, die einen neuen Partner im besten Alter suchen.',
+    pricing: '29,90€/Monat',
+    features: ['Speziell für 50+', 'Einfache Bedienung', 'Regionale Suche', 'Persönliche Beratung', 'Sichere Umgebung'],
+  },
+  {
+    id: 'silbersingles',
+    name: 'SilberSingles',
+    logo: 'https://www.datinginsider.de/singles-50-plus/wp-content/uploads/sites/7/2019/10/silbersingles_logo_200x200-100x100.png',
+    rating: 4.1,
+    userCount: '1+ Million',
+    ageGroup: '50-70 Jahre',
+    description: 'SilberSingles richtet sich ausschließlich an Singles über 50. Die Plattform verwendet einen umfassenden Persönlichkeitstest, um kompatible Partner vorzuschlagen, und legt besonderen Wert auf Benutzerfreundlichkeit.',
+    pricing: '27,95€/Monat',
+    features: ['Exklusiv für 50+', 'Kompatibler Partnervorschläge', 'Einfache Nutzung', 'Aktive Community', 'Sicherheitsfunktionen'],
+  },
+  {
+    id: 'bildkontakte',
+    name: 'Bildkontakte',
+    logo: 'https://www.gutscheine.org/wp-content/uploads/bildkontakte.png',
+    rating: 3.9,
+    userCount: '3+ Millionen',
+    ageGroup: '40-60 Jahre',
+    description: 'Bildkontakte ist eine kostengünstige Option mit einer großen Nutzerbasis. Die Plattform bietet auch kostenlose Basisfunktionen und ist daher eine gute Option für Singles, die Dating-Plattformen erst ausprobieren möchten.',
+    pricing: '9,99€/Monat',
+    features: ['Günstiges Preismodell', 'Große Nutzerbasis', 'Kostenlose Basisfunktionen', 'Schnelle Anmeldung', 'Unkomplizierte Suche'],
+  },
+  {
+    id: 'nebenan',
+    name: 'Nebenan',
+    logo: 'https://play-lh.googleusercontent.com/wGxyOQo0XfX1WZO0KYJsN17_o3D9yRQwhY4Fshr7Sb9J3V_xzPqz5vc9ns8K4GeFXg',
+    rating: 3.8,
+    userCount: '1+ Million',
+    ageGroup: '40-65 Jahre',
+    description: 'Nebenan ist eine Plattform, die lokale Verbindungen fördert. Neben Dating bietet sie auch Freundschafts- und Nachbarschaftsnetzwerke, was sie zu einer entspannten Option für ältere Singles macht.',
+    pricing: 'Kostenlos',
+    features: ['Lokale Kontakte', 'Kostenlose Nutzung', 'Gemeinschaftsorientiert', 'Vielfältige Kontaktmöglichkeiten', 'Geringe Einstiegshürden'],
+  },
+];
+
+export default platforms;
