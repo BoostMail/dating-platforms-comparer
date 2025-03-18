@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from './AnimatedSection';
@@ -9,6 +9,7 @@ interface HeroSectionProps {
   subtitle: string;
   ctaText?: string;
   ctaHref?: string;
+  children?: ReactNode;
 }
 
 // Manually implementing framer-motion for this component
@@ -25,6 +26,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   subtitle,
   ctaText = "Top-Plattformen vergleichen",
   ctaHref = "#vergleich",
+  children,
 }) => {
   return (
     <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
@@ -53,11 +55,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </AnimatedSection>
           
           <AnimatedSection delay={400}>
-            <a href={ctaHref}>
-              <Button size="lg" className="rounded-full px-8 transition-all shadow-md hover:shadow-lg duration-300 hover:scale-105">
-                {ctaText}
-              </Button>
-            </a>
+            {children ? (
+              children
+            ) : (
+              <a href={ctaHref}>
+                <Button size="lg" className="rounded-full px-8 transition-all shadow-md hover:shadow-lg duration-300 hover:scale-105">
+                  {ctaText}
+                </Button>
+              </a>
+            )}
           </AnimatedSection>
         </div>
       </div>
