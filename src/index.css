@@ -94,11 +94,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    text-transform: none;
   }
 
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+    text-transform: none;
   }
 
   ::-webkit-scrollbar {

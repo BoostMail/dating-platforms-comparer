@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -36,7 +37,12 @@ export const Header = () => {
             onClick={closeMenu}
           >
             <Heart className="h-6 w-6 text-primary" />
-            <span className="text-xl font-medium">Singlebörsen<span className="text-primary">Test</span></span>
+            <div className="flex flex-col items-start">
+              <span className="text-xl font-medium normal-case">
+                <span className="bg-primary text-white px-1">Singlebörsen</span>
+                <span className="text-foreground normal-case">Test</span>
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

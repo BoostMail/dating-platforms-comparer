@@ -37,19 +37,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection delay={100}>
-            <span className="inline-block px-3 py-1 mb-6 text-xs font-medium rounded-full bg-primary/10 text-primary">
+            <span className="inline-block px-3 py-1 mb-6 text-xs font-medium rounded-full bg-primary/10 text-primary normal-case">
               Dating-Plattformen für 40+ in Deutschland
             </span>
           </AnimatedSection>
           
           <AnimatedSection delay={200}>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-balance leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-balance leading-tight normal-case">
               {title}
             </h1>
           </AnimatedSection>
           
           <AnimatedSection delay={300}>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance normal-case">
               {subtitle}
             </p>
           </AnimatedSection>
@@ -59,7 +59,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               children
             ) : (
               <a href={ctaHref}>
-                <Button size="lg" className="rounded-full px-8 transition-all shadow-md hover:shadow-lg duration-300 hover:scale-105">
+                <Button size="lg" className="rounded-full px-8 transition-all shadow-md hover:shadow-lg duration-300 hover:scale-105 normal-case">
                   {ctaText}
                 </Button>
               </a>
