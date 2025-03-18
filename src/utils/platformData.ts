@@ -2,6 +2,19 @@
 // Sample data for German dating platforms for 40+ 
 export const platforms = [
   {
+    id: 'lemonswan',
+    name: 'LemonSwan',
+    logo: 'https://www.lemonswan.de/fileadmin/_processed_/8/7/csm_LemonSwan_Logo_Standard_b02ff07143.png',
+    rating: 4.9,
+    userCount: '4+ Millionen',
+    ageGroup: '40-70 Jahre',
+    description: 'LemonSwan ist eine Premium-Partnervermittlung mit Fokus auf langfristige Beziehungen. Die Plattform bietet einen wissenschaftlich fundierten Persönlichkeitstest und zeichnet sich durch hochwertige Profile und ausgezeichneten Kundenservice aus.',
+    pricing: '29,90€/Monat',
+    features: ['Wissenschaftlicher Persönlichkeitstest', 'Ausgezeichneter Kundenservice', 'Hohe Matching-Qualität', 'Verifizierte Profile', 'Kostenlos für Akademikerinnen'],
+    badge: 'Testsieger',
+    color: 'bg-primary'
+  },
+  {
     id: 'parship',
     name: 'Parship',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8f/PARSHIP_2017_logo.svg',
@@ -11,7 +24,7 @@ export const platforms = [
     description: 'Parship ist eine der führenden Online-Partnervermittlungen in Deutschland mit einem wissenschaftlich fundierten Matching-Verfahren. Besonders beliebt bei Singles ab 40, die eine langfristige Beziehung suchen.',
     pricing: '39,90€/Monat',
     features: ['Wissenschaftlicher Persönlichkeitstest', 'Hohe Erfolgsquote', 'Seriöse Singles', 'ID-Check', 'Diskrete Partnersuche'],
-    badge: 'Testsieger',
+    badge: 'Sehr gut',
     color: 'bg-amber-500'
   },
   {

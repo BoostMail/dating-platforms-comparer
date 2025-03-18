@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -37,7 +36,7 @@ export const Header = () => {
             onClick={closeMenu}
           >
             <Heart className="h-6 w-6 text-primary" />
-            <span className="font-serif text-xl font-medium">Dating<span className="text-primary">Vergleich</span></span>
+            <span className="text-xl font-medium">Singlebörsen<span className="text-primary">Test</span></span>
           </Link>
 
           {/* Desktop Navigation */}
