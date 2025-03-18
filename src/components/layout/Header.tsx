@@ -37,12 +37,7 @@ export const Header = () => {
             onClick={closeMenu}
           >
             <Heart className="h-6 w-6 text-primary" />
-            <div className="flex flex-col items-start">
-              <span className="text-xl font-medium normal-case">
-                <span className="bg-primary text-white px-1">Singlebörsen</span>
-                <span className="text-foreground normal-case">Test</span>
-              </span>
-            </div>
+            <span className="text-xl font-medium normal-case">Singlebörsen<span className="text-primary">Test</span></span>
           </Link>
 
           {/* Desktop Navigation */}
