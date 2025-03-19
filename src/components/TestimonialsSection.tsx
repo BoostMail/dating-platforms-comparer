@@ -7,21 +7,21 @@ const testimonials = [
   {
     id: 1,
     name: 'Sabine, 54',
-    platform: 'Parship',
-    text: 'Nach meiner Scheidung dachte ich, dass ich nie wieder jemanden finden würde. Dank Parship habe ich meinen neuen Partner Thomas kennengelernt. Wir sind jetzt seit 2 Jahren zusammen!',
+    platform: 'LemonSwan',
+    text: 'Nach meiner Scheidung dachte ich, dass ich nie wieder jemanden finden würde. Dank LemonSwan habe ich meinen neuen Partner Thomas kennengelernt. Wir sind jetzt seit 2 Jahren zusammen!',
     rating: 5,
   },
   {
     id: 2,
     name: 'Michael, 63',
-    platform: 'ElitePartner',
-    text: 'Als Witwer war der Gedanke ans Dating beängstigend. ElitePartner hat mir geholfen, Frauen zu treffen, die meine Interessen teilen. Die Plattform ist seriös und die Qualität der Profile ist hervorragend.',
+    platform: 'Verliebt ab 40',
+    text: 'Als Witwer war der Gedanke ans Dating beängstigend. Verliebt ab 40 hat mir geholfen, Frauen zu treffen, die meine Interessen teilen. Die Plattform ist seriös und die Qualität der Profile ist hervorragend.',
     rating: 5,
   },
   {
     id: 3,
     name: 'Andrea, 47',
-    platform: 'Zweisam',
+    platform: 'Zusammen',
     text: 'Die einfache Bedienung hat mich überzeugt. Nach nur 3 Monaten habe ich jemanden getroffen, mit dem ich jetzt eine wunderbare Beziehung führe.',
     rating: 4,
   }
