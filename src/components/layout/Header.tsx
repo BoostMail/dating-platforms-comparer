@@ -102,10 +102,10 @@ export const Header = () => {
             </button>
           </div>
 
-          {/* CTA Button - Desktop Only */}
+          {/* CTA Button - Desktop Only, optimized for conversion */}
           <div className="hidden md:block">
-            <Button size="sm" className="font-medium shadow-sm hover:shadow transition-all duration-300">
-              Top-Plattformen 2024
+            <Button size="sm" className="font-medium shadow-sm hover:shadow transition-all duration-300 hover:scale-105">
+              Zum Testsieger
             </Button>
           </div>
         </div>
@@ -151,10 +151,10 @@ export const Header = () => {
             Ratgeber
           </NavLink>
           <Button 
-            className="mt-6 w-full justify-center"
+            className="mt-6 w-full justify-center shadow-md"
             onClick={closeMenu}
           >
-            Top-Plattformen 2024
+            Zum Testsieger
           </Button>
         </nav>
       </div>

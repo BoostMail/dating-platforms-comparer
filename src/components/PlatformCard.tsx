@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Users, MessageCircle, ArrowRight } from 'lucide-react';
+import { Star, Users, MessageCircle, ArrowRight, Award, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -51,6 +51,8 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
   // Calculate delay based on index
   const delay = 100 + (index * 100);
 
+  const isTopPlatform = index === 0;
+
   return (
     <AnimatedSection 
       delay={delay}
@@ -63,7 +65,8 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
       <div className={cn(
         "relative h-full rounded-xl overflow-hidden transition-all duration-300",
         "backdrop-blur-md bg-white/40 dark:bg-black/40 border border-border shadow-sm",
-        "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60"
+        "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60",
+        isTopPlatform && "shadow-md border-primary/20 transform-gpu"
       )}>
         {/* Badge positioning */}
         {badge && (
@@ -77,10 +80,18 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           </div>
         )}
 
+        {/* Animated ribbon for top platform */}
+        {isTopPlatform && (
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/70 to-primary animate-pulse"></div>
+        )}
+
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-3">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden bg-secondary/50 p-2 flex items-center justify-center">
+              <div className={cn(
+                "flex-shrink-0 w-12 h-12 rounded-full overflow-hidden bg-secondary/50 p-2 flex items-center justify-center",
+                isTopPlatform && "border-2 border-primary"
+              )}>
                 <img 
                   src={logo} 
                   alt={`${name} Logo`} 
@@ -89,7 +100,19 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                 />
               </div>
               <div>
-                <h3 className="font-medium text-lg">{name}</h3>
+                <div className="flex items-center">
+                  <h3 className={cn(
+                    "font-medium text-lg",
+                    isTopPlatform && "font-semibold text-primary"
+                  )}>
+                    {name}
+                  </h3>
+                  {isTopPlatform && (
+                    <Badge variant="outline" className="ml-2 bg-primary/10 text-primary border-primary/20 text-[10px]">
+                      <Award className="h-3 w-3 mr-1" /> Testsieger
+                    </Badge>
+                  )}
+                </div>
                 <div className="flex items-center space-x-1">
                   <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                   <span className="text-sm font-medium">{rating.toFixed(1)}</span>
@@ -115,11 +138,12 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
 
               <div className="mb-6">
                 <p className="text-sm font-medium mb-2">Top Features:</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="space-y-1.5">
                   {features.slice(0, 3).map((feature, idx) => (
-                    <Badge key={idx} variant="secondary" className="font-normal text-xs">
-                      {feature}
-                    </Badge>
+                    <div key={idx} className="flex items-center text-sm">
+                      <Check className="h-3.5 w-3.5 text-primary mr-2" />
+                      <span className="text-muted-foreground text-xs">{feature}</span>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -134,11 +158,23 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
             
             <div className="flex items-center space-x-2">
               <a href={`https://${id}.de`} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="group relative overflow-hidden">
-                  <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-                    Besuchen
+                <Button 
+                  variant={isTopPlatform ? "default" : "outline"} 
+                  size="sm" 
+                  className={cn(
+                    "group relative overflow-hidden",
+                    isTopPlatform && "shadow-md hover:shadow-lg"
+                  )}
+                >
+                  <span className={cn(
+                    "relative z-10 transition-colors duration-300",
+                    isTopPlatform ? "text-white" : "group-hover:text-white"
+                  )}>
+                    {isTopPlatform ? "Jetzt besuchen" : "Besuchen"}
                   </span>
-                  <span className="absolute inset-0 w-full h-full bg-primary transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                  {!isTopPlatform && (
+                    <span className="absolute inset-0 w-full h-full bg-primary transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                  )}
                 </Button>
               </a>
               
@@ -150,6 +186,12 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
               </Link>
             </div>
           </div>
+          
+          {isTopPlatform && (
+            <div className="mt-4 pt-4 border-t border-border/50 text-xs text-center text-muted-foreground">
+              <span>10.000+ Nutzer haben {name} als beste Dating-Plattform gewählt</span>
+            </div>
+          )}
         </div>
       </div>
     </AnimatedSection>

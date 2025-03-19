@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ArrowRight, CheckCircle, AlertCircle, Info } from 'lucide-react';
+import { Star, ArrowRight, CheckCircle, AlertCircle, Info, TrendingUp, Award } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -44,23 +44,33 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                     key={platform.id}
                     className={cn(
                       "border-t border-border transition-colors duration-150 hover:bg-muted/20",
-                      index === 0 ? "bg-amber-50/30 dark:bg-amber-900/10" : (
+                      index === 0 ? "bg-amber-50/50 dark:bg-amber-900/20" : (
                         index % 2 === 0 ? 'bg-transparent' : 'bg-muted/10'
                       )
                     )}
                   >
                     <td className="p-4 font-medium text-center">
                       {index === 0 ? (
-                        <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-100">
-                          1
+                        <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white dark:bg-primary">
+                          <Trophy className="h-4 w-4" />
                         </div>
                       ) : (
-                        <div className="text-muted-foreground">{index + 1}</div>
+                        <div className={cn(
+                          "inline-flex items-center justify-center w-6 h-6 rounded-full text-center",
+                          index === 1 ? "bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-100" :
+                          index === 2 ? "bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100" :
+                          "text-muted-foreground"
+                        )}>
+                          {index + 1}
+                        </div>
                       )}
                     </td>
                     <td className="p-4">
                       <div className="flex items-center space-x-3">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-full overflow-hidden bg-secondary/50 p-1 flex items-center justify-center">
+                        <div className={cn(
+                          "flex-shrink-0 w-10 h-10 rounded-full overflow-hidden bg-secondary/50 p-1 flex items-center justify-center",
+                          index === 0 && "w-12 h-12 border-2 border-primary"
+                        )}>
                           <img
                             src={platform.logo}
                             alt={`${platform.name} Logo`}
@@ -69,7 +79,17 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                           />
                         </div>
                         <div>
-                          <div className="font-medium">{platform.name}</div>
+                          <div className={cn(
+                            "font-medium",
+                            index === 0 && "font-semibold text-primary"
+                          )}>
+                            {platform.name}
+                            {index === 0 && (
+                              <Badge variant="outline" className="ml-2 bg-primary/10 text-primary border-primary/20 text-[10px]">
+                                <Award className="h-3 w-3 mr-1" /> Testsieger
+                              </Badge>
+                            )}
+                          </div>
                           <div className="text-xs text-muted-foreground">{platform.ageGroup}</div>
                         </div>
                       </div>
@@ -77,9 +97,19 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                     <td className="p-4">
                       <div className="flex items-center space-x-1">
                         <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                        <span className="font-medium">{platform.rating.toFixed(1)}</span>
+                        <span className={cn(
+                          "font-medium",
+                          index === 0 && "text-lg font-semibold"
+                        )}>
+                          {platform.rating.toFixed(1)}
+                        </span>
                         <span className="text-muted-foreground">/5.0</span>
                       </div>
+                      {index === 0 && (
+                        <div className="text-xs flex items-center mt-1 text-green-600 dark:text-green-400">
+                          <TrendingUp className="h-3 w-3 mr-1" /> Höchste Erfolgsquote
+                        </div>
+                      )}
                     </td>
                     <td className="p-4">
                       <div className="text-sm">
@@ -118,13 +148,13 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                         <a href={`https://${platform.id}.de`} target="_blank" rel="noopener noreferrer">
                           <Button 
                             variant={index === 0 ? "default" : "outline"} 
-                            size="sm"
+                            size={index === 0 ? "default" : "sm"}
                             className={cn(
                               "whitespace-nowrap",
-                              index === 0 && "shadow-sm"
+                              index === 0 && "shadow-md px-6 hover:scale-105 transition-all duration-300"
                             )}
                           >
-                            Webseite
+                            {index === 0 ? "Jetzt besuchen" : "Webseite"}
                           </Button>
                         </a>
                         <Link to={`/plattform/${platform.id}`}>
@@ -142,7 +172,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
         </div>
       </ScrollArea>
       
-      <div className="mt-4 px-4 py-3 bg-muted/20 rounded-lg text-xs text-muted-foreground flex space-x-3">
+      <div className="mt-4 px-4 py-3 bg-muted/20 rounded-lg text-xs text-muted-foreground flex flex-col sm:flex-row gap-2 sm:gap-0 sm:space-x-3">
         <div className="flex items-center">
           <CheckCircle className="h-3 w-3 mr-1" />
           <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { year: 'numeric', month: 'long' })}</span>
@@ -155,5 +185,27 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
     </AnimatedSection>
   );
 };
+
+const Trophy = (props: any) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+    <path d="M4 22h16"></path>
+    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+  </svg>
+);
 
 export default ComparisonTable;
