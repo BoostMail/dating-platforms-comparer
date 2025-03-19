@@ -42,7 +42,6 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
     userCount, 
     ageGroup, 
     description, 
-    pricing,
     features, 
     badge,
     color = "bg-primary" 
@@ -117,6 +116,12 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                   <span className="text-sm font-medium">{rating.toFixed(1)}</span>
                 </div>
+                {isTopPlatform && (
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1">
+                    <Users className="h-3 w-3 mr-1" />
+                    <span>327 Singles haben sich heute entschieden</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -152,8 +157,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
 
           <div className="flex items-center justify-between">
             <div className="text-sm">
-              <span className="text-muted-foreground">Ab </span>
-              <span className="font-medium">{pricing}</span>
+              <span className="text-muted-foreground">{ageGroup}</span>
             </div>
             
             <div className="flex items-center space-x-2">
@@ -186,12 +190,6 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
               </Link>
             </div>
           </div>
-          
-          {isTopPlatform && (
-            <div className="mt-4 pt-4 border-t border-border/50 text-xs text-center text-muted-foreground">
-              <span>10.000+ Nutzer haben {name} als beste Dating-Plattform gewählt</span>
-            </div>
-          )}
         </div>
       </div>
     </AnimatedSection>

@@ -7,6 +7,7 @@ import ComparisonTable from '@/components/ComparisonTable';
 import FeatureComparison from '@/components/FeatureComparison';
 import AnimatedSection from '@/components/AnimatedSection';
 import { Button } from '@/components/ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   Heart, 
   CheckCircle, 
@@ -14,13 +15,14 @@ import {
   MessageCircle, 
   ShieldCheck, 
   Users, 
-  ArrowRight,
   Clock,
   ThumbsUp
 } from 'lucide-react';
 import platforms from '@/utils/platformData';
 
 const Comparison = () => {
+  const isMobile = useIsMobile();
+  
   // Initialize animation observation when component mounts
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -93,26 +95,29 @@ const Comparison = () => {
                   <p className="text-sm opacity-80">Tausende Singles finden täglich ihr Glück</p>
                 </div>
               </div>
+              
+              {/* Mobile CTA Button at top - visible only on mobile */}
+              {isMobile && (
+                <div className="absolute top-4 right-4">
+                  <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
+                    <Button 
+                      size="sm" 
+                      className="shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap bg-primary hover:bg-primary/90"
+                    >
+                      Jetzt besuchen
+                    </Button>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           
-          {/* Top ranking platform banner */}
-          <div className="mb-6 bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800/50 text-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
-              <img src={platforms[0].logo} alt={platforms[0].name} className="h-12 object-contain" />
-              <div className="font-medium text-lg">10.000+ Nutzer haben {platforms[0].name} gewählt</div>
-              <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="shadow-md hover:shadow-lg transition-all duration-300 whitespace-nowrap">
-                  Zum Testsieger
-                </Button>
-              </a>
-            </div>
-          </div>
-          
+          {/* Desktop comparison table */}
           <ComparisonTable platforms={platforms} />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-            {platforms.slice(0, 3).map((platform, index) => (
+          {/* Mobile view - cards instead of table */}
+          <div className="md:hidden grid grid-cols-1 gap-6 mt-8">
+            {platforms.map((platform, index) => (
               <PlatformCard 
                 key={platform.id} 
                 platform={platform} 
@@ -121,13 +126,15 @@ const Comparison = () => {
             ))}
           </div>
           
-          <div className="text-center mt-10">
-            <a href="/vergleich">
-              <Button variant="outline" className="group">
-                <span>Alle Plattformen vergleichen</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </a>
+          {/* Desktop view - top 3 platforms */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+            {platforms.slice(0, 3).map((platform, index) => (
+              <PlatformCard 
+                key={platform.id} 
+                platform={platform} 
+                index={index} 
+              />
+            ))}
           </div>
           
           {/* Feature Comparison */}

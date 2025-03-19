@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ArrowRight, CheckCircle, AlertCircle, Info, TrendingUp, Award } from 'lucide-react';
+import { Star, ArrowRight, CheckCircle, Info, TrendingUp, Award, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Platform } from './PlatformCard';
 import AnimatedSection from './AnimatedSection';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ComparisonTableProps {
   platforms: Platform[];
@@ -21,9 +22,15 @@ interface ComparisonTableProps {
 
 const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
   const sortedPlatforms = [...platforms].sort((a, b) => b.rating - a.rating);
+  const isMobile = useIsMobile();
+
+  // Hide table on mobile and show PlatformCards instead
+  if (isMobile) {
+    return null;
+  }
 
   return (
-    <AnimatedSection className="w-full">
+    <AnimatedSection className="w-full hidden md:block">
       <ScrollArea className="w-full overflow-auto">
         <div className="min-w-[768px] w-full">
           <div className="rounded-xl overflow-hidden border border-border shadow-sm">
@@ -33,7 +40,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                   <th className="p-4 text-left font-medium text-sm w-6">#</th>
                   <th className="p-4 text-left font-medium text-sm">Plattform</th>
                   <th className="p-4 text-left font-medium text-sm">Bewertung</th>
-                  <th className="p-4 text-left font-medium text-sm">Preise</th>
+                  <th className="p-4 text-left font-medium text-sm">Nutzergruppe</th>
                   <th className="p-4 text-left font-medium text-sm">Beste Eigenschaften</th>
                   <th className="p-4 text-left font-medium text-sm"></th>
                 </tr>
@@ -91,6 +98,12 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                             )}
                           </div>
                           <div className="text-xs text-muted-foreground">{platform.ageGroup}</div>
+                          {index === 0 && (
+                            <div className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1">
+                              <Users className="h-3 w-3 mr-1" />
+                              <span>327 Singles haben sich heute entschieden</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </td>
@@ -113,7 +126,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                     </td>
                     <td className="p-4">
                       <div className="text-sm">
-                        <span className="font-medium">{platform.pricing}</span>
+                        <span className="font-medium">{platform.ageGroup}</span>
                       </div>
                     </td>
                     <td className="p-4">
@@ -179,7 +192,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
         </div>
         <div className="flex items-center">
           <Info className="h-3 w-3 mr-1" />
-          <span>Preise können variieren. Besuchen Sie die offizielle Webseite für aktuelle Angebote.</span>
+          <span>Von Experten geprüft für die beste Partnerwahl.</span>
         </div>
       </div>
     </AnimatedSection>
