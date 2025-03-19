@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -55,61 +54,43 @@ const Comparison = () => {
       
       <main className="flex-grow pt-16">
         {/* Top Platforms Section */}
-        <section className="section-container pt-16 pb-10" id="vergleich">
-          <AnimatedSection className="text-center mb-12">
-            <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-4">
-              Unsere Empfehlungen
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-balance">
-              Die besten Dating-Plattformen für die Generation 40+
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto text-balance">
-              Wir haben die führenden Dating-Plattformen in Deutschland analysiert und bewertet, um Ihnen die besten Optionen für Ihre Partnersuche zu präsentieren.
-            </p>
-          </AnimatedSection>
-          
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center rounded-full border border-border p-1 text-muted-foreground bg-muted/30">
-              <div className="flex items-center space-x-1 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-primary shadow-sm dark:bg-black">
-                <Clock className="mr-1 h-3 w-3" />
-                <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
-              </div>
-              <div className="flex items-center space-x-1 rounded-full px-3 py-1.5 text-xs font-medium">
-                <ThumbsUp className="mr-1 h-3 w-3" />
-                <span>Von Experten geprüft</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Happy couple image for above the fold in Vergleich section */}
-          <div className="mb-10 flex justify-center">
-            <div className="relative rounded-xl overflow-hidden max-w-2xl w-full">
-              <img 
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
-                alt="Glückliches Paar 40+" 
-                className="w-full h-60 md:h-80 object-cover rounded-xl" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-4 text-white">
-                  <p className="text-lg md:text-xl font-medium">Finden Sie Ihren Traumpartner</p>
-                  <p className="text-sm opacity-80">Tausende Singles finden täglich ihr Glück</p>
+        <section className="section-container pt-10 pb-10" id="vergleich">
+          {/* New hero image with text overlay */}
+          <div className="relative w-full rounded-xl overflow-hidden mb-10">
+            <img 
+              src="/lovable-uploads/a458171d-8418-4cf4-a0b1-4ce4d9b0bf8a.png" 
+              alt="Glückliches Paar 40+" 
+              className="w-full h-64 md:h-96 object-cover" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+              <div className="p-6 md:p-8 text-white w-full">
+                <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance">
+                  Die besten Plattformen für Singles 40+
+                </h2>
+                <div className="flex justify-start mt-4">
+                  <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
+                    <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
+                      <Clock className="mr-1 h-3 w-3" />
+                      <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              {/* Mobile CTA Button at top - visible only on mobile */}
-              {isMobile && (
-                <div className="absolute top-4 right-4">
-                  <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
-                    <Button 
-                      size="sm" 
-                      className="shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap bg-primary hover:bg-primary/90"
-                    >
-                      Jetzt besuchen
-                    </Button>
-                  </a>
-                </div>
-              )}
             </div>
+            
+            {/* Mobile CTA Button at top - visible only on mobile */}
+            {isMobile && (
+              <div className="absolute top-4 right-4">
+                <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="sm" 
+                    className="shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap bg-primary hover:bg-primary/90"
+                  >
+                    Jetzt besuchen
+                  </Button>
+                </a>
+              </div>
+            )}
           </div>
           
           {/* Desktop comparison table */}
