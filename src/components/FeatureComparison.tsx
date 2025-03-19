@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Check, X, HelpCircle, Info } from 'lucide-react';
+import { Check, X, HelpCircle, Info, ChevronRight, ChevronLeft } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import {
@@ -11,12 +10,17 @@ import {
 } from '@/components/ui/tooltip';
 import { Platform } from './PlatformCard';
 import AnimatedSection from './AnimatedSection';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Button } from '@/components/ui/button';
 
 interface FeatureComparisonProps {
   platforms: Platform[];
 }
 
 const FeatureComparison: React.FC<FeatureComparisonProps> = ({ platforms }) => {
+  const isMobile = useIsMobile();
+  const [activePlatformIndex, setActivePlatformIndex] = useState(0);
+  
   // Features for comparison
   const features = [
     { id: 'profile_verification', name: 'Profil-Verifizierung', description: 'Überprüfung der Identität der Nutzer' },
@@ -186,6 +190,92 @@ const FeatureComparison: React.FC<FeatureComparisonProps> = ({ platforms }) => {
     }
   };
 
+  // Mobile platform selector controls
+  const nextPlatform = () => {
+    setActivePlatformIndex((prev) => 
+      prev === platforms.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevPlatform = () => {
+    setActivePlatformIndex((prev) => 
+      prev === 0 ? platforms.length - 1 : prev - 1
+    );
+  };
+
+  // Render mobile version
+  if (isMobile) {
+    const activePlatform = platforms[activePlatformIndex];
+    
+    return (
+      <AnimatedSection className="bg-white/40 dark:bg-black/40 backdrop-blur-md border border-border rounded-xl shadow-sm overflow-hidden">
+        {/* Platform Selector */}
+        <div className="p-4 border-b border-border bg-muted/30 flex items-center justify-between">
+          <Button variant="outline" size="icon" onClick={prevPlatform} className="h-8 w-8">
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          
+          <div className="flex flex-col items-center">
+            <div className="w-10 h-10 rounded-full bg-secondary/50 p-1 flex items-center justify-center mb-1">
+              <img 
+                src={activePlatform.logo} 
+                alt={activePlatform.name} 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-sm font-medium">{activePlatform.name}</span>
+          </div>
+          
+          <Button variant="outline" size="icon" onClick={nextPlatform} className="h-8 w-8">
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+        
+        {/* Features List */}
+        <div className="p-4">
+          <ul className="space-y-3">
+            {features.map((feature) => (
+              <li key={feature.id} className="flex items-center justify-between border-b border-border/50 pb-3">
+                <div className="flex items-center">
+                  <span className="font-medium text-sm">{feature.name}</span>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger className="ml-1">
+                        <Info className="h-4 w-4 text-muted-foreground" />
+                      </TooltipTrigger>
+                      <TooltipContent side="right" className="text-xs max-w-xs">
+                        {feature.description}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <div>
+                  {renderFeatureQuality(activePlatform.id, feature.id)}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Platform Counter */}
+        <div className="p-4 border-t border-border bg-muted/10 text-center">
+          <div className="flex justify-center space-x-1">
+            {platforms.map((_, index) => (
+              <span 
+                key={index} 
+                className={cn(
+                  "h-1.5 w-1.5 rounded-full",
+                  index === activePlatformIndex ? "bg-primary" : "bg-muted"
+                )}
+              />
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+    );
+  }
+
+  // Render desktop version (unchanged)
   return (
     <AnimatedSection className="bg-white/40 dark:bg-black/40 backdrop-blur-md border border-border rounded-xl shadow-sm overflow-hidden">
       <ScrollArea className="w-full overflow-auto">

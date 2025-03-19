@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -55,42 +56,43 @@ const Comparison = () => {
       <main className="flex-grow pt-16">
         {/* Top Platforms Section */}
         <section className="section-container pt-10 pb-10" id="vergleich">
-          {/* New hero image with text overlay */}
+          {/* Mobile timestamp - visible only on mobile */}
+          {isMobile && (
+            <div className="mb-4 flex justify-start">
+              <div className="inline-flex items-center rounded-full border border-border p-1 text-muted-foreground bg-background/50">
+                <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
+                  <Clock className="mr-1 h-3 w-3" />
+                  <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Hero image with text overlay - different for mobile and desktop */}
           <div className="relative w-full rounded-xl overflow-hidden mb-10">
             <img 
               src="/lovable-uploads/a458171d-8418-4cf4-a0b1-4ce4d9b0bf8a.png" 
               alt="Glückliches Paar 40+" 
-              className="w-full h-64 md:h-96 object-cover" 
+              className={`w-full ${isMobile ? 'h-64' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-center'}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
               <div className="p-6 md:p-8 text-white w-full">
                 <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance">
                   Die besten Plattformen für Singles 40+
                 </h2>
-                <div className="flex justify-start mt-4">
-                  <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
-                    <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
-                      <Clock className="mr-1 h-3 w-3" />
-                      <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
+                {/* Desktop timestamp - only visible on desktop */}
+                {!isMobile && (
+                  <div className="flex justify-start mt-4">
+                    <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
+                      <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
+                        <Clock className="mr-1 h-3 w-3" />
+                        <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
-            
-            {/* Mobile CTA Button at top - visible only on mobile */}
-            {isMobile && (
-              <div className="absolute top-4 right-4">
-                <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    size="sm" 
-                    className="shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap bg-primary hover:bg-primary/90"
-                  >
-                    Jetzt besuchen
-                  </Button>
-                </a>
-              </div>
-            )}
           </div>
           
           {/* Desktop comparison table */}
