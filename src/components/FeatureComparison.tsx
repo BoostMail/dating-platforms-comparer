@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Check, X, HelpCircle, Info, ChevronRight, ChevronLeft } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -210,38 +211,38 @@ const FeatureComparison: React.FC<FeatureComparisonProps> = ({ platforms }) => {
     return (
       <AnimatedSection className="bg-white/40 dark:bg-black/40 backdrop-blur-md border border-border rounded-xl shadow-sm overflow-hidden">
         {/* Platform Selector */}
-        <div className="p-4 border-b border-border bg-muted/30 flex items-center justify-between">
-          <Button variant="outline" size="icon" onClick={prevPlatform} className="h-8 w-8">
+        <div className="p-3 border-b border-border bg-muted/30 flex items-center justify-between">
+          <Button variant="outline" size="icon" onClick={prevPlatform} className="h-7 w-7">
             <ChevronLeft className="h-4 w-4" />
           </Button>
           
           <div className="flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full bg-secondary/50 p-1 flex items-center justify-center mb-1">
+            <div className="w-8 h-8 rounded-full bg-secondary/50 p-1 flex items-center justify-center mb-1">
               <img 
                 src={activePlatform.logo} 
                 alt={activePlatform.name} 
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="text-sm font-medium">{activePlatform.name}</span>
+            <span className="text-xs font-bold">{activePlatform.name}</span>
           </div>
           
-          <Button variant="outline" size="icon" onClick={nextPlatform} className="h-8 w-8">
+          <Button variant="outline" size="icon" onClick={nextPlatform} className="h-7 w-7">
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
         
         {/* Features List */}
-        <div className="p-4">
-          <ul className="space-y-3">
+        <div className="p-3">
+          <ul className="space-y-2">
             {features.map((feature) => (
-              <li key={feature.id} className="flex items-center justify-between border-b border-border/50 pb-3">
+              <li key={feature.id} className="flex items-center justify-between border-b border-border/50 pb-2">
                 <div className="flex items-center">
-                  <span className="font-medium text-sm">{feature.name}</span>
+                  <span className="font-bold text-xs">{feature.name}</span>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger className="ml-1">
-                        <Info className="h-4 w-4 text-muted-foreground" />
+                        <Info className="h-3 w-3 text-muted-foreground" />
                       </TooltipTrigger>
                       <TooltipContent side="right" className="text-xs max-w-xs">
                         {feature.description}
@@ -258,7 +259,7 @@ const FeatureComparison: React.FC<FeatureComparisonProps> = ({ platforms }) => {
         </div>
         
         {/* Platform Counter */}
-        <div className="p-4 border-t border-border bg-muted/10 text-center">
+        <div className="p-2 border-t border-border bg-muted/10 text-center">
           <div className="flex justify-center space-x-1">
             {platforms.map((_, index) => (
               <span 

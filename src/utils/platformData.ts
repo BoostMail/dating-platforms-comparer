@@ -8,8 +8,8 @@ export const platforms = [
     rating: 4.9,
     userCount: '4+ Millionen',
     ageGroup: '40-70 Jahre',
-    description: 'LemonSwan ist eine Premium-Partnervermittlung mit Fokus auf langfristige Beziehungen. Die Plattform bietet einen wissenschaftlich fundierten Persönlichkeitstest und zeichnet sich durch hochwertige Profile und ausgezeichneten Kundenservice aus.',
-    pricing: '29,90€/Monat',
+    description: 'Premium-Partnervermittlung mit Fokus auf langfristige Beziehungen. Die Plattform bietet einen wissenschaftlich fundierten Persönlichkeitstest und zeichnet sich durch hochwertige Profile und ausgezeichneten Kundenservice aus.',
+    pricing: '',
     features: ['Wissenschaftlicher Persönlichkeitstest', 'Ausgezeichneter Kundenservice', 'Hohe Matching-Qualität', 'Verifizierte Profile', 'Kostenlos für Akademikerinnen'],
     badge: 'Testsieger',
     color: 'bg-primary'
@@ -21,8 +21,8 @@ export const platforms = [
     rating: 4.7,
     userCount: '3.5+ Millionen',
     ageGroup: '40-65 Jahre',
-    description: 'Verliebt ab 40 ist speziell für Singles ab 40 konzipiert und bietet eine intuitive Plattform für die Partnersuche. Die Seite legt besonderen Wert auf Seriosität und eine einfache Bedienung.',
-    pricing: '24,90€/Monat',
+    description: 'Speziell für Singles ab 40 konzipiert und bietet eine intuitive Plattform für die Partnersuche. Die Seite legt besonderen Wert auf Seriosität und eine einfache Bedienung.',
+    pricing: '',
     features: ['Speziell für 40+', 'Einfache Bedienung', 'Hohe Erfolgsquote', 'Aktive Community', 'Persönliche Beratung'],
     badge: 'Sehr gut',
     color: 'bg-amber-500'
@@ -34,8 +34,8 @@ export const platforms = [
     rating: 4.5,
     userCount: '2.8+ Millionen',
     ageGroup: '40-65 Jahre',
-    description: 'Zusammen verbindet Menschen mit ähnlichen Interessen und Lebenseinstellungen. Die Plattform ist bekannt für ihre qualitativ hochwertigen Profile und persönlichen Matching-Vorschläge.',
-    pricing: '32,90€/Monat',
+    description: 'Verbindet Menschen mit ähnlichen Interessen und Lebenseinstellungen. Die Plattform ist bekannt für ihre qualitativ hochwertigen Profile und persönlichen Matching-Vorschläge.',
+    pricing: '',
     features: ['Tiefgehende Profile', 'Kompatibilitätstest', 'Video-Dating Option', 'Regelmäßige Events', 'Persönlicher Kundenservice'],
     badge: 'Premium',
     color: 'bg-blue-500'
@@ -47,8 +47,8 @@ export const platforms = [
     rating: 4.3,
     userCount: '1.5+ Millionen',
     ageGroup: '60+ Jahre',
-    description: '60 Plus Treff richtet sich speziell an Senioren und bietet eine benutzerfreundliche Plattform für Menschen, die im höheren Alter einen Partner suchen. Besonders fokussiert auf einfache Bedienung und persönlichen Support.',
-    pricing: '26,90€/Monat',
+    description: 'Richtet sich speziell an Senioren und bietet eine benutzerfreundliche Plattform für Menschen, die im höheren Alter einen Partner suchen. Besonders fokussiert auf einfache Bedienung und persönlichen Support.',
+    pricing: '',
     features: ['Für Senioren konzipiert', 'Einfache Navigation', 'Telefonsupport', 'Regionale Suche', 'Offline-Treffen'],
   },
   {
@@ -58,8 +58,8 @@ export const platforms = [
     rating: 4.1,
     userCount: '2+ Millionen',
     ageGroup: '50-75 Jahre',
-    description: '50 plus Singlebörse ist eine beliebte Plattform für Singles in der Lebensmitte. Die Seite bietet zahlreiche Funktionen, um passende Partner zu finden, und legt Wert auf eine sichere und respektvolle Umgebung.',
-    pricing: '27,95€/Monat',
+    description: 'Eine beliebte Plattform für Singles in der Lebensmitte. Die Seite bietet zahlreiche Funktionen, um passende Partner zu finden, und legt Wert auf eine sichere und respektvolle Umgebung.',
+    pricing: '',
     features: ['Fokus auf 50+', 'Detaillierte Suchfilter', 'Forum & Community', 'Profilprüfung', 'Sichere Chatumgebung'],
   }
 ];

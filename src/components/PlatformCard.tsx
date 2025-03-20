@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from './AnimatedSection';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export interface Platform {
   id: string;
@@ -46,11 +47,16 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
     badge,
     color = "bg-primary" 
   } = platform;
+  const isMobile = useIsMobile();
 
   // Calculate delay based on index
   const delay = 100 + (index * 100);
 
   const isTopPlatform = index === 0;
+  
+  // Remove "PlatformName ist eine" from the description for mobile view
+  const mobileDescription = isMobile ? 
+    description.replace(new RegExp(`^${name} ist eine`), 'Premium-') : description;
 
   return (
     <AnimatedSection 
@@ -68,7 +74,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         isTopPlatform && "shadow-md border-primary/20 transform-gpu"
       )}>
         {/* Badge positioning */}
-        {badge && (
+        {badge && !isMobile && (
           <div className="absolute -top-1 -right-1 z-10">
             <Badge className={cn(
               "rounded-sm font-medium text-xs px-2 py-0.5 shadow-sm",
@@ -84,12 +90,13 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/70 to-primary animate-pulse"></div>
         )}
 
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className={cn("p-6", isMobile && "pt-3 pb-4 px-4")}>
+          <div className="flex items-center justify-between mb-3">
             <div className="flex items-center space-x-3">
               <div className={cn(
                 "flex-shrink-0 w-12 h-12 rounded-full overflow-hidden bg-secondary/50 p-2 flex items-center justify-center",
-                isTopPlatform && "border-2 border-primary"
+                isTopPlatform && "border-2 border-primary",
+                isMobile && "w-10 h-10"
               )}>
                 <img 
                   src={logo} 
@@ -102,11 +109,12 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                 <div className="flex items-center">
                   <h3 className={cn(
                     "font-medium text-lg",
-                    isTopPlatform && "font-semibold text-primary"
+                    isTopPlatform && "font-semibold text-primary",
+                    isMobile && "font-bold text-base"
                   )}>
                     {name}
                   </h3>
-                  {isTopPlatform && (
+                  {isTopPlatform && !isMobile && (
                     <Badge variant="outline" className="ml-2 bg-primary/10 text-primary border-primary/20 text-[10px]">
                       <Award className="h-3 w-3 mr-1" /> Testsieger
                     </Badge>
@@ -117,8 +125,11 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   <span className="text-sm font-medium">{rating.toFixed(1)}</span>
                 </div>
                 {isTopPlatform && (
-                  <div className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1">
-                    <Users className="h-3 w-3 mr-1" />
+                  <div className={cn(
+                    "text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1",
+                    isMobile && "text-[11px] font-medium"
+                  )}>
+                    <Users className={cn("h-3 w-3 mr-1", isMobile && "h-2.5 w-2.5")} />
                     <span>327 Singles haben sich heute entschieden</span>
                   </div>
                 )}
@@ -128,26 +139,50 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
 
           {variant === 'default' && (
             <>
-              <p className="text-muted-foreground mb-4 text-sm line-clamp-2">{description}</p>
+              <p className={cn(
+                "text-muted-foreground mb-3 text-sm line-clamp-2",
+                isMobile && "text-xs mb-2"
+              )}>
+                {mobileDescription}
+              </p>
               
-              <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className={cn(
+                "grid grid-cols-2 gap-3 mb-4",
+                isMobile && "gap-2 mb-3"
+              )}>
                 <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">{userCount}</span>
+                  <Users className={cn("w-4 h-4 text-muted-foreground", isMobile && "w-3.5 h-3.5")} />
+                  <span className={cn("text-xs text-muted-foreground", isMobile && "text-[11px]")}>{userCount}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <MessageCircle className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">{ageGroup}</span>
+                  <MessageCircle className={cn("w-4 h-4 text-muted-foreground", isMobile && "w-3.5 h-3.5")} />
+                  <span className={cn("text-xs text-muted-foreground", isMobile && "text-[11px]")}>{ageGroup}</span>
                 </div>
               </div>
 
-              <div className="mb-6">
-                <p className="text-sm font-medium mb-2">Top Features:</p>
-                <div className="space-y-1.5">
+              <div className={cn("mb-5", isMobile && "mb-3")}>
+                {!isMobile && (
+                  <p className="text-sm font-medium mb-2">Top Features:</p>
+                )}
+                <div className={cn(
+                  "space-y-1.5", 
+                  isMobile && "space-y-1"
+                )}>
                   {features.slice(0, 3).map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm">
-                      <Check className="h-3.5 w-3.5 text-primary mr-2" />
-                      <span className="text-muted-foreground text-xs">{feature}</span>
+                    <div key={idx} className={cn(
+                      "flex items-center text-sm",
+                      isMobile && "text-xs"
+                    )}>
+                      <Check className={cn(
+                        "h-3.5 w-3.5 text-primary mr-2", 
+                        isMobile && "h-3 w-3 mr-1.5"
+                      )} />
+                      <span className={cn(
+                        "text-muted-foreground text-xs",
+                        isMobile && "text-[11px]"
+                      )}>
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -164,7 +199,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
               <a href={`https://${id}.de`} target="_blank" rel="noopener noreferrer">
                 <Button 
                   variant={isTopPlatform ? "default" : "outline"} 
-                  size="sm" 
+                  size={isMobile ? "sm" : isTopPlatform ? "default" : "sm"}
                   className={cn(
                     "group relative overflow-hidden",
                     isTopPlatform && "shadow-md hover:shadow-lg"

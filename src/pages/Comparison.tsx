@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -53,14 +52,14 @@ const Comparison = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       
-      <main className="flex-grow pt-16">
+      <main className="flex-grow pt-10 md:pt-16">
         {/* Top Platforms Section */}
-        <section className="section-container pt-10 pb-10" id="vergleich">
+        <section className="section-container pt-4 md:pt-10 pb-10" id="vergleich">
           {/* Mobile timestamp - visible only on mobile */}
           {isMobile && (
-            <div className="mb-4 flex justify-start">
+            <div className="mb-2 flex justify-start">
               <div className="inline-flex items-center rounded-full border border-border p-1 text-muted-foreground bg-background/50">
-                <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
+                <div className="flex items-center space-x-1 px-2 py-0.5 text-xs font-medium">
                   <Clock className="mr-1 h-3 w-3" />
                   <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
                 </div>
@@ -69,14 +68,14 @@ const Comparison = () => {
           )}
           
           {/* Hero image with text overlay - different for mobile and desktop */}
-          <div className="relative w-full rounded-xl overflow-hidden mb-10">
+          <div className="relative w-full rounded-xl overflow-hidden mb-6 md:mb-10">
             <img 
-              src="/lovable-uploads/a458171d-8418-4cf4-a0b1-4ce4d9b0bf8a.png" 
+              src="/lovable-uploads/dc2e8715-a8b0-4c7f-87e8-a6fd19e4b10d.png" 
               alt="Glückliches Paar 40+" 
-              className={`w-full ${isMobile ? 'h-64' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-center'}`}
+              className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-center'}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <div className="p-6 md:p-8 text-white w-full">
+              <div className="p-4 md:p-8 text-white w-full">
                 <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance">
                   Die besten Plattformen für Singles 40+
                 </h2>
@@ -99,7 +98,7 @@ const Comparison = () => {
           <ComparisonTable platforms={platforms} />
           
           {/* Mobile view - cards instead of table */}
-          <div className="md:hidden grid grid-cols-1 gap-6 mt-8">
+          <div className="md:hidden grid grid-cols-1 gap-4 mt-4">
             {platforms.map((platform, index) => (
               <PlatformCard 
                 key={platform.id} 
@@ -121,16 +120,16 @@ const Comparison = () => {
           </div>
           
           {/* Feature Comparison */}
-          <section className="bg-muted/20 py-16 sm:py-24 mt-16 rounded-xl">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <AnimatedSection className="text-center mb-12">
-                <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-4">
+          <section className="bg-muted/20 py-10 sm:py-16 mt-10 md:mt-16 rounded-xl">
+            <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+              <AnimatedSection className="text-center mb-8 md:mb-12">
+                <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-3 md:mb-4">
                   Funktionsvergleich
                 </span>
-                <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-balance">
+                <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
                   Was bieten die verschiedenen Plattformen?
                 </h2>
-                <p className="text-muted-foreground max-w-3xl mx-auto text-balance">
+                <p className="text-muted-foreground max-w-3xl mx-auto text-balance text-sm md:text-base">
                   Alle Dating-Plattformen sind unterschiedlich. Wir haben die wichtigsten Funktionen verglichen, damit Sie die richtige Wahl treffen können.
                 </p>
               </AnimatedSection>
@@ -140,20 +139,20 @@ const Comparison = () => {
           </section>
           
           {/* Benefits Section */}
-          <section className="section-container mt-16">
-            <AnimatedSection className="text-center mb-12">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-4">
+          <section className="section-container mt-10 md:mt-16">
+            <AnimatedSection className="text-center mb-8 md:mb-12">
+              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-3 md:mb-4">
                 Vorteile
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-balance">
+              <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
                 Warum Online-Dating für 40+ Singles funktioniert
               </h2>
-              <p className="text-muted-foreground max-w-3xl mx-auto text-balance">
+              <p className="text-muted-foreground max-w-3xl mx-auto text-balance text-sm md:text-base">
                 Die digitale Partnersuche bietet gerade für Menschen über 40 viele Vorteile, die den Weg zu einer neuen Beziehung erleichtern können.
               </p>
             </AnimatedSection>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8 md:mt-12">
               <AnimatedSection delay={100} className="p-6 rounded-xl backdrop-blur-md bg-white/40 dark:bg-black/40 border border-border shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300">
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Search className="h-6 w-6 text-primary" />
@@ -218,19 +217,19 @@ const Comparison = () => {
         </section>
         
         {/* CTA Section - optimized for conversions */}
-        <section className="py-16 relative overflow-hidden">
+        <section className="py-10 md:py-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 z-0"></div>
           <div className="absolute inset-0 bg-grain opacity-30"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <AnimatedSection className="text-center mx-auto max-w-3xl py-12">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-4">
+            <AnimatedSection className="text-center mx-auto max-w-3xl py-8 md:py-12">
+              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-3 md:mb-4">
                 Starten Sie noch heute
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4 text-balance">
+              <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
                 Bereit, Ihr Liebesglück zu finden?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 text-balance">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 text-balance">
                 Tausende Singles haben bereits ihren Partner gefunden. Sie könnten der Nächste sein!
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
