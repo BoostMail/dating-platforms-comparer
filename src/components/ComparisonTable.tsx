@@ -101,7 +101,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                           {index === 0 && (
                             <div className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1">
                               <Users className="h-3 w-3 mr-1" />
-                              <span>327 Singles haben sich heute entschieden</span>
+                              <span>327 haben sich heute angemeldet</span>
                             </div>
                           )}
                         </div>
@@ -164,7 +164,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                             size={index === 0 ? "default" : "sm"}
                             className={cn(
                               "whitespace-nowrap",
-                              index === 0 && "shadow-md px-6 hover:scale-105 transition-all duration-300"
+                              index === 0 && "shadow-lg shadow-primary/30 px-6 hover:scale-105 transition-all duration-300"
                             )}
                           >
                             {index === 0 ? "Jetzt besuchen" : "Webseite"}

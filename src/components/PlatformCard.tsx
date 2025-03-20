@@ -56,7 +56,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
   
   // Remove "PlatformName ist eine" from the description for mobile view
   const mobileDescription = isMobile ? 
-    description.replace(new RegExp(`^${name} ist eine`), 'Premium-') : description;
+    description.replace(new RegExp(`${name} ist eine|${name} ist ein`), '') : description;
 
   return (
     <AnimatedSection 
@@ -73,8 +73,8 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60",
         isTopPlatform && "shadow-md border-primary/20 transform-gpu"
       )}>
-        {/* Badge positioning */}
-        {badge && !isMobile && (
+        {/* Badge positioning - only show on desktop and not for LemonSwan */}
+        {badge && !isMobile && !isTopPlatform && (
           <div className="absolute -top-1 -right-1 z-10">
             <Badge className={cn(
               "rounded-sm font-medium text-xs px-2 py-0.5 shadow-sm",
@@ -130,7 +130,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                     isMobile && "text-[11px] font-medium"
                   )}>
                     <Users className={cn("h-3 w-3 mr-1", isMobile && "h-2.5 w-2.5")} />
-                    <span>327 Singles haben sich heute entschieden</span>
+                    <span>327 haben sich heute angemeldet</span>
                   </div>
                 )}
               </div>
@@ -141,7 +141,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
             <>
               <p className={cn(
                 "text-muted-foreground mb-3 text-sm line-clamp-2",
-                isMobile && "text-xs mb-2"
+                isMobile && isTopPlatform ? "text-sm font-medium mb-2" : (isMobile && "text-xs mb-2")
               )}>
                 {mobileDescription}
               </p>
@@ -161,9 +161,6 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
               </div>
 
               <div className={cn("mb-5", isMobile && "mb-3")}>
-                {!isMobile && (
-                  <p className="text-sm font-medium mb-2">Top Features:</p>
-                )}
                 <div className={cn(
                   "space-y-1.5", 
                   isMobile && "space-y-1"
@@ -171,15 +168,15 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   {features.slice(0, 3).map((feature, idx) => (
                     <div key={idx} className={cn(
                       "flex items-center text-sm",
-                      isMobile && "text-xs"
+                      isMobile && isTopPlatform ? "text-sm" : (isMobile && "text-xs")
                     )}>
                       <Check className={cn(
                         "h-3.5 w-3.5 text-primary mr-2", 
-                        isMobile && "h-3 w-3 mr-1.5"
+                        isMobile && isTopPlatform ? "h-4 w-4 mr-2" : (isMobile && "h-3 w-3 mr-1.5")
                       )} />
                       <span className={cn(
                         "text-muted-foreground text-xs",
-                        isMobile && "text-[11px]"
+                        isMobile && isTopPlatform ? "text-sm font-semibold" : (isMobile && "text-[11px]")
                       )}>
                         {feature}
                       </span>
@@ -202,7 +199,8 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   size={isMobile ? "sm" : isTopPlatform ? "default" : "sm"}
                   className={cn(
                     "group relative overflow-hidden",
-                    isTopPlatform && "shadow-md hover:shadow-lg"
+                    isTopPlatform && "shadow-md hover:shadow-lg",
+                    isTopPlatform && "animate-pulse shadow-[0_0_15px_rgba(222,67,147,0.5)]"
                   )}
                 >
                   <span className={cn(

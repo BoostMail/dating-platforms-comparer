@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -57,7 +58,7 @@ const Comparison = () => {
         <section className="section-container pt-4 md:pt-10 pb-10" id="vergleich">
           {/* Mobile timestamp - visible only on mobile */}
           {isMobile && (
-            <div className="mb-2 flex justify-start">
+            <div className="mb-2 flex justify-start -mt-2">
               <div className="inline-flex items-center rounded-full border border-border p-1 text-muted-foreground bg-background/50">
                 <div className="flex items-center space-x-1 px-2 py-0.5 text-xs font-medium">
                   <Clock className="mr-1 h-3 w-3" />
@@ -70,7 +71,7 @@ const Comparison = () => {
           {/* Hero image with text overlay - different for mobile and desktop */}
           <div className="relative w-full rounded-xl overflow-hidden mb-6 md:mb-10">
             <img 
-              src="/lovable-uploads/dc2e8715-a8b0-4c7f-87e8-a6fd19e4b10d.png" 
+              src="/lovable-uploads/088957b7-19d6-4fe7-ab75-dc6afcd021ec.png" 
               alt="Glückliches Paar 40+" 
               className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-center'}`}
             />
