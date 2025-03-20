@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Users, MessageCircle, ArrowRight, Award, Check } from 'lucide-react';
+import { Star, Users, MessageCircle, ArrowRight, Award, Check, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -187,7 +188,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                       )} />
                       <span className={cn(
                         "text-muted-foreground text-xs",
-                        isMobile && isTopPlatform ? "text-sm font-semibold" : (isMobile && "text-[11px]")
+                        isMobile && isTopPlatform ? "text-sm" : (isMobile && "text-[11px]")
                       )}>
                         {feature}
                       </span>
@@ -199,9 +200,23 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           )}
 
           <div className="flex items-center justify-between">
-            <div className="text-sm">
-              <span className="text-muted-foreground">{ageGroup}</span>
-            </div>
+            {/* Replace ageGroup with Details button on mobile */}
+            {isMobile ? (
+              <Link to={`/plattform/${id}`}>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="text-primary border-primary/30 hover:bg-primary/10 flex items-center gap-1.5"
+                >
+                  <Info className="h-3.5 w-3.5" />
+                  <span>Details</span>
+                </Button>
+              </Link>
+            ) : (
+              <div className="text-sm">
+                <span className="text-muted-foreground">{ageGroup}</span>
+              </div>
+            )}
             
             <div className="flex items-center space-x-2">
               <a href={`https://${id}.de`} target="_blank" rel="noopener noreferrer">
@@ -226,12 +241,14 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                 </Button>
               </a>
               
-              <Link to={`/plattform/${id}`}>
-                <Button variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10">
-                  <span className="sr-only">Details zu {name}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
+              {!isMobile && (
+                <Link to={`/plattform/${id}`}>
+                  <Button variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10">
+                    <span className="sr-only">Details zu {name}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

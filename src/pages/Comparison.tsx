@@ -49,6 +49,35 @@ const Comparison = () => {
     };
   }, []);
 
+  // CTA section component - extracted to avoid duplication
+  const CTASection = () => (
+    <section className="py-10 md:py-16 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 z-0"></div>
+      <div className="absolute inset-0 bg-grain opacity-30"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <AnimatedSection className="text-center mx-auto max-w-3xl py-8 md:py-12">
+          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-3 md:mb-4">
+            Starten Sie noch heute
+          </span>
+          <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
+            Bereit, Ihr Liebesglück zu finden?
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 text-balance">
+            Tausende Singles haben bereits ihren Partner gefunden. Sie könnten der Nächste sein!
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="w-full sm:w-auto rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                Jetzt zum Testsieger
+              </Button>
+            </a>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -119,6 +148,9 @@ const Comparison = () => {
               />
             ))}
           </div>
+          
+          {/* Mobile CTA - moved directly below the platform list */}
+          {isMobile && <CTASection />}
           
           {/* Desktop view - top 3 platforms */}
           <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
@@ -228,32 +260,8 @@ const Comparison = () => {
           </section>
         </section>
         
-        {/* CTA Section - optimized for conversions */}
-        <section className="py-10 md:py-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 z-0"></div>
-          <div className="absolute inset-0 bg-grain opacity-30"></div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <AnimatedSection className="text-center mx-auto max-w-3xl py-8 md:py-12">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-3 md:mb-4">
-                Starten Sie noch heute
-              </span>
-              <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
-                Bereit, Ihr Liebesglück zu finden?
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 text-balance">
-                Tausende Singles haben bereits ihren Partner gefunden. Sie könnten der Nächste sein!
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="w-full sm:w-auto rounded-full px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    Jetzt zum Testsieger
-                  </Button>
-                </a>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
+        {/* CTA Section - only for desktop */}
+        {!isMobile && <CTASection />}
       </main>
       
       <Footer />
