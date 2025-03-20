@@ -53,21 +53,9 @@ const Comparison = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       
-      <main className="flex-grow pt-10 md:pt-16">
+      <main className="flex-grow pt-6 md:pt-16">
         {/* Top Platforms Section */}
-        <section className="section-container pt-4 md:pt-10 pb-10" id="vergleich">
-          {/* Mobile timestamp - visible only on mobile */}
-          {isMobile && (
-            <div className="mb-2 flex justify-start -mt-2">
-              <div className="inline-flex items-center rounded-full border border-border p-1 text-muted-foreground bg-background/50">
-                <div className="flex items-center space-x-1 px-2 py-0.5 text-xs font-medium">
-                  <Clock className="mr-1 h-3 w-3" />
-                  <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
-                </div>
-              </div>
-            </div>
-          )}
-          
+        <section className="section-container pt-2 md:pt-10 pb-10" id="vergleich">
           {/* Hero image with text overlay - different for mobile and desktop */}
           <div className="relative w-full rounded-xl overflow-hidden mb-6 md:mb-10">
             <img 
@@ -75,13 +63,24 @@ const Comparison = () => {
               alt="Glückliches Paar 40+" 
               className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-center'}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <div className="p-4 md:p-8 text-white w-full">
-                <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance">
-                  Die besten Plattformen für Singles 40+
-                </h2>
-                {/* Desktop timestamp - only visible on desktop */}
-                {!isMobile && (
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-between">
+              {/* Mobile text - positioned at the top */}
+              {isMobile && (
+                <div className="p-4 text-white w-full pt-4">
+                  <h2 className="font-serif text-2xl font-semibold text-balance">
+                    Die besten Plattformen für Singles 40+
+                  </h2>
+                </div>
+              )}
+              
+              {/* Desktop text - positioned at the bottom */}
+              {!isMobile && (
+                <div className="p-4 md:p-8 text-white w-full self-end">
+                  <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance">
+                    Die besten Plattformen für Singles 40+
+                  </h2>
+                  
+                  {/* Desktop timestamp - only visible on desktop */}
                   <div className="flex justify-start mt-4">
                     <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
                       <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
@@ -90,8 +89,20 @@ const Comparison = () => {
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+              
+              {/* Mobile timestamp - positioned at the bottom */}
+              {isMobile && (
+                <div className="p-3 pb-4">
+                  <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
+                    <div className="flex items-center space-x-1 px-2 py-0.5 text-xs font-medium">
+                      <Clock className="mr-1 h-3 w-3" />
+                      <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           

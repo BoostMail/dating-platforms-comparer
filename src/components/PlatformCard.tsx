@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Users, MessageCircle, ArrowRight, Award, Check } from 'lucide-react';
@@ -54,9 +53,21 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
 
   const isTopPlatform = index === 0;
   
-  // Remove "PlatformName ist eine" from the description for mobile view
-  const mobileDescription = isMobile ? 
-    description.replace(new RegExp(`${name} ist eine|${name} ist ein`), '') : description;
+  // Extract just the first sentence for mobile headings and remove platform name prefix
+  const getProcessedDescription = () => {
+    if (!isMobile) return description;
+    
+    // Remove platform name prefix
+    let processed = description.replace(new RegExp(`${name} ist eine|${name} ist ein`), '');
+    
+    // For mobile, if requested, keep just first sentence
+    if (isMobile) {
+      const firstSentence = processed.split('.')[0];
+      return firstSentence + '.';
+    }
+    
+    return processed;
+  };
 
   return (
     <AnimatedSection 
@@ -73,7 +84,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60",
         isTopPlatform && "shadow-md border-primary/20 transform-gpu"
       )}>
-        {/* Badge positioning - only show on desktop and not for LemonSwan */}
+        {/* Badge positioning - only show on desktop */}
         {badge && !isMobile && !isTopPlatform && (
           <div className="absolute -top-1 -right-1 z-10">
             <Badge className={cn(
@@ -143,7 +154,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                 "text-muted-foreground mb-3 text-sm line-clamp-2",
                 isMobile && isTopPlatform ? "text-sm font-medium mb-2" : (isMobile && "text-xs mb-2")
               )}>
-                {mobileDescription}
+                {getProcessedDescription()}
               </p>
               
               <div className={cn(
