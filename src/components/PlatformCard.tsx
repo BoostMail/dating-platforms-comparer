@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Users, MessageCircle, ArrowRight, Award, Check, Info } from 'lucide-react';
@@ -139,7 +138,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                 {isTopPlatform && (
                   <div className={cn(
                     "text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1",
-                    isMobile && "text-[11px] font-medium"
+                    isMobile && "text-[11px] font-medium bg-emerald-100 dark:bg-emerald-900/30 rounded-full px-2 py-0.5 mt-1.5"
                   )}>
                     <Users className={cn("h-3 w-3 mr-1", isMobile && "h-2.5 w-2.5")} />
                     <span>327 haben sich heute angemeldet</span>
@@ -200,17 +199,10 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           )}
 
           <div className="flex items-center justify-between">
-            {/* Replace ageGroup with Details button on mobile */}
+            {/* Replace ageGroup with Details link on mobile */}
             {isMobile ? (
-              <Link to={`/plattform/${id}`}>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="text-primary border-primary/30 hover:bg-primary/10 flex items-center gap-1.5"
-                >
-                  <Info className="h-3.5 w-3.5" />
-                  <span>Details</span>
-                </Button>
+              <Link to={`/plattform/${id}`} className="text-primary text-sm">
+                Details
               </Link>
             ) : (
               <div className="text-sm">
