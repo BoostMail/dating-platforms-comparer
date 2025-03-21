@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Users, MessageCircle, ArrowRight, Award, Check, Info } from 'lucide-react';
+import { Star, Users, MessageCircle, ArrowRight, Award, Check, Info, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -82,8 +83,15 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         "relative h-full rounded-xl overflow-hidden transition-all duration-300",
         "backdrop-blur-md bg-white/40 dark:bg-black/40 border border-border shadow-sm",
         "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60",
-        isTopPlatform && "shadow-md border-primary/20 transform-gpu"
+        isTopPlatform && "shadow-lg border-primary/30 bg-white/60 dark:bg-black/60"
       )}>
+        {/* Ribbon for top platform */}
+        {isTopPlatform && !isMobile && (
+          <div className="absolute -right-16 top-5 bg-primary text-white py-1 px-12 transform rotate-45 z-20 text-xs font-medium shadow-md">
+            Testsieger
+          </div>
+        )}
+        
         {/* Badge positioning - only show on desktop */}
         {badge && !isMobile && !isTopPlatform && (
           <div className="absolute -top-1 -right-1 z-10">
@@ -201,7 +209,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           <div className="flex items-center justify-between">
             {/* Replace ageGroup with Details link on mobile */}
             {isMobile ? (
-              <Link to={`/plattform/${id}`} className="text-primary text-sm">
+              <Link to={`/plattform/${id}`} className="text-primary text-sm font-normal">
                 Details
               </Link>
             ) : (
@@ -218,12 +226,14 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   className={cn(
                     "group relative overflow-hidden",
                     isTopPlatform && "shadow-md hover:shadow-lg",
-                    isTopPlatform && "animate-pulse shadow-[0_0_15px_rgba(222,67,147,0.5)]"
+                    isTopPlatform && !isMobile && "bg-yellow-400 hover:bg-yellow-500 text-black border-yellow-500"
                   )}
                 >
                   <span className={cn(
                     "relative z-10 transition-colors duration-300",
-                    isTopPlatform ? "text-white" : "group-hover:text-white"
+                    isTopPlatform && !isMobile ? "text-black" : (
+                      isTopPlatform ? "text-white" : "group-hover:text-white"
+                    )
                   )}>
                     {isTopPlatform ? "Jetzt besuchen" : "Besuchen"}
                   </span>

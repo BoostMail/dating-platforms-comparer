@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ArrowRight, CheckCircle, Info, TrendingUp, Award, Users } from 'lucide-react';
+import { Star, ArrowRight, CheckCircle, Info, TrendingUp, Award, Users, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -33,155 +33,113 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
     <AnimatedSection className="w-full hidden md:block">
       <ScrollArea className="w-full overflow-auto">
         <div className="min-w-[768px] w-full">
-          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-muted/30">
-                  <th className="p-4 text-left font-medium text-sm w-6">#</th>
-                  <th className="p-4 text-left font-medium text-sm">Plattform</th>
-                  <th className="p-4 text-left font-medium text-sm">Bewertung</th>
-                  <th className="p-4 text-left font-medium text-sm">Nutzergruppe</th>
-                  <th className="p-4 text-left font-medium text-sm">Beste Eigenschaften</th>
-                  <th className="p-4 text-left font-medium text-sm"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {sortedPlatforms.map((platform, index) => (
-                  <tr 
-                    key={platform.id}
-                    className={cn(
-                      "border-t border-border transition-colors duration-150 hover:bg-muted/20",
-                      index === 0 ? "bg-amber-50/50 dark:bg-amber-900/20" : (
-                        index % 2 === 0 ? 'bg-transparent' : 'bg-muted/10'
-                      )
-                    )}
-                  >
-                    <td className="p-4 font-medium text-center">
-                      {index === 0 ? (
-                        <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white dark:bg-primary">
-                          <Trophy className="h-4 w-4" />
-                        </div>
-                      ) : (
-                        <div className={cn(
-                          "inline-flex items-center justify-center w-6 h-6 rounded-full text-center",
-                          index === 1 ? "bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-100" :
-                          index === 2 ? "bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100" :
-                          "text-muted-foreground"
-                        )}>
-                          {index + 1}
-                        </div>
-                      )}
-                    </td>
-                    <td className="p-4">
-                      <div className="flex items-center space-x-3">
-                        <div className={cn(
-                          "flex-shrink-0 w-10 h-10 rounded-full overflow-hidden bg-secondary/50 p-1 flex items-center justify-center",
-                          index === 0 && "w-12 h-12 border-2 border-primary"
-                        )}>
-                          <img
-                            src={platform.logo}
-                            alt={`${platform.name} Logo`}
-                            className="w-full h-full object-contain"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div>
-                          <div className={cn(
-                            "font-medium",
-                            index === 0 && "font-semibold text-primary"
-                          )}>
-                            {platform.name}
-                            {index === 0 && (
-                              <Badge variant="outline" className="ml-2 bg-primary/10 text-primary border-primary/20 text-[10px]">
-                                <Award className="h-3 w-3 mr-1" /> Testsieger
-                              </Badge>
-                            )}
-                          </div>
-                          <div className="text-xs text-muted-foreground">{platform.ageGroup}</div>
-                          {index === 0 && (
-                            <div className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1">
-                              <Users className="h-3 w-3 mr-1" />
-                              <span>327 haben sich heute angemeldet</span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </td>
-                    <td className="p-4">
-                      <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                        <span className={cn(
-                          "font-medium",
-                          index === 0 && "text-lg font-semibold"
-                        )}>
-                          {platform.rating.toFixed(1)}
-                        </span>
-                        <span className="text-muted-foreground">/5.0</span>
-                      </div>
-                      {index === 0 && (
-                        <div className="text-xs flex items-center mt-1 text-green-600 dark:text-green-400">
-                          <TrendingUp className="h-3 w-3 mr-1" /> Höchste Erfolgsquote
-                        </div>
-                      )}
-                    </td>
-                    <td className="p-4">
-                      <div className="text-sm">
-                        <span className="font-medium">{platform.ageGroup}</span>
-                      </div>
-                    </td>
-                    <td className="p-4">
-                      <div className="flex flex-wrap gap-1">
-                        {platform.features.slice(0, 2).map((feature, idx) => (
-                          <Badge key={idx} variant="secondary" className="text-xs font-normal">
-                            {feature}
-                          </Badge>
-                        ))}
-                        {platform.features.length > 2 && (
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger>
-                                <Badge variant="outline" className="text-xs">
-                                  +{platform.features.length - 2}
-                                </Badge>
-                              </TooltipTrigger>
-                              <TooltipContent side="top">
-                                <div className="text-xs space-y-1">
-                                  {platform.features.slice(2).map((feature, idx) => (
-                                    <p key={idx}>• {feature}</p>
-                                  ))}
-                                </div>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        )}
-                      </div>
-                    </td>
-                    <td className="p-4">
-                      <div className="flex items-center justify-end space-x-2">
-                        <a href={`https://${platform.id}.de`} target="_blank" rel="noopener noreferrer">
-                          <Button 
-                            variant={index === 0 ? "default" : "outline"} 
-                            size={index === 0 ? "default" : "sm"}
+          {sortedPlatforms.slice(0, 3).map((platform, index) => {
+            const isTopPlatform = index === 0;
+            return (
+              <div key={platform.id} className={cn(
+                "mb-4 rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-all duration-200",
+                isTopPlatform ? "bg-amber-50/50 dark:bg-amber-900/20" : "bg-white/50 dark:bg-black/30"
+              )}>
+                {/* Ribbon for top platform */}
+                {isTopPlatform && (
+                  <div className="relative">
+                    <div className="absolute -left-8 top-4 bg-primary text-white py-1 px-6 rotate-[-45deg] transform-gpu text-sm font-medium shadow-md">
+                      Beliebteste Singlebörse
+                    </div>
+                  </div>
+                )}
+                
+                <div className="p-4 md:p-6 grid grid-cols-12 gap-4">
+                  {/* Logo and rating section */}
+                  <div className="col-span-3 flex flex-col items-center justify-center">
+                    <div className="w-28 h-16 bg-white p-2 rounded-lg mb-4 flex items-center justify-center">
+                      <img
+                        src={platform.logo}
+                        alt={`${platform.name} Logo`}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold">{platform.rating.toFixed(1)}</div>
+                      <div className="flex justify-center mt-1">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star 
+                            key={i} 
                             className={cn(
-                              "whitespace-nowrap",
-                              index === 0 && "shadow-lg shadow-primary/30 px-6 hover:scale-105 transition-all duration-300"
-                            )}
-                          >
-                            {index === 0 ? "Jetzt besuchen" : "Webseite"}
-                          </Button>
-                        </a>
-                        <Link to={`/plattform/${platform.id}`}>
-                          <Button variant="ghost" size="icon" className="text-muted-foreground">
-                            <ArrowRight className="h-4 w-4" />
-                          </Button>
-                        </Link>
+                              "w-5 h-5", 
+                              i < Math.floor(platform.rating) 
+                                ? "text-amber-500 fill-amber-500" 
+                                : i < platform.rating 
+                                  ? "text-amber-500 fill-amber-500 opacity-50" 
+                                  : "text-gray-300 fill-gray-300"
+                            )} 
+                          />
+                        ))}
                       </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                      <div className="text-sm text-muted-foreground mt-1">/ 10</div>
+                    </div>
+                  </div>
+
+                  {/* Platform details section */}
+                  <div className="col-span-6">
+                    <h3 className="text-xl font-semibold mb-2">
+                      {platform.name} - {isTopPlatform ? "Der mit Abstand beste Anbieter im Test" : `Für ${platform.ageGroup.split('-')[0].trim()}+ Singles`}
+                    </h3>
+                    <p className="text-muted-foreground mb-3">{platform.description.split('.')[0]}.</p>
+                    
+                    <div className="space-y-2">
+                      {platform.features.slice(0, 4).map((feature, idx) => (
+                        <div key={idx} className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm">{feature}</span>
+                        </div>
+                      ))}
+                      
+                      {/* Additional feature with arrow */}
+                      <div className="flex items-start">
+                        <ArrowRight className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">Erhalten Sie täglich passende Partnervorschläge</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4">
+                      <Link to={`/plattform/${platform.id}`}>
+                        <span className="text-primary flex items-center hover:underline text-sm">
+                          Mehr Details <ArrowRight className="ml-1 h-3 w-3" />
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* CTA section */}
+                  <div className="col-span-3 flex flex-col items-center justify-between">
+                    {isTopPlatform && (
+                      <div className="bg-white dark:bg-black p-3 rounded-lg border border-green-200 dark:border-green-800 shadow-sm mb-4 w-full text-center">
+                        <p className="text-sm text-green-700 dark:text-green-400">
+                          Mehr als 400 Leute haben sich heute für diese Singlebörse entschieden!
+                        </p>
+                      </div>
+                    )}
+                    
+                    <div className="flex-grow"></div>
+                    
+                    <a href={`https://${platform.id}.de`} target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button 
+                        variant={isTopPlatform ? "default" : "outline"} 
+                        size="lg"
+                        className={cn(
+                          "w-full rounded-full font-medium text-base",
+                          isTopPlatform ? "bg-yellow-400 hover:bg-yellow-500 text-black shadow-lg" : ""
+                        )}
+                      >
+                        Singlebörse besuchen <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </ScrollArea>
       

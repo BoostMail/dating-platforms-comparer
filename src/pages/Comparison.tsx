@@ -78,6 +78,17 @@ const Comparison = () => {
     </section>
   );
 
+  // Rearrange platforms for the grid display - putting winner in the middle
+  const getArrangedPlatforms = () => {
+    const sorted = [...platforms].sort((a, b) => b.rating - a.rating);
+    if (sorted.length >= 3) {
+      // Move the top platform to the middle (index 1)
+      const rearranged = [sorted[1], sorted[0], sorted[2]];
+      return rearranged;
+    }
+    return sorted;
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -152,15 +163,20 @@ const Comparison = () => {
           {/* Mobile CTA - moved directly below the platform list */}
           {isMobile && <CTASection />}
           
-          {/* Desktop view - top 3 platforms */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-            {platforms.slice(0, 3).map((platform, index) => (
-              <PlatformCard 
-                key={platform.id} 
-                platform={platform} 
-                index={index} 
-              />
-            ))}
+          {/* Desktop view - top 3 platforms with winner in the middle */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            {getArrangedPlatforms().map((platform, index) => {
+              // Index 1 is now our top platform (in the middle)
+              const isTopPlatform = platform.id === platforms[0].id;
+              return (
+                <PlatformCard 
+                  key={platform.id} 
+                  platform={platform} 
+                  index={isTopPlatform ? 0 : index + 1} 
+                  className={isTopPlatform ? "transform-gpu md:scale-110 md:-mt-4 z-10" : "z-0"}
+                />
+              );
+            })}
           </div>
           
           {/* Feature Comparison */}
