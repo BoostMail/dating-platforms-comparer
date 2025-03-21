@@ -40,14 +40,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                 "mb-4 rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-all duration-200",
                 isTopPlatform ? "bg-amber-50/50 dark:bg-amber-900/20" : "bg-white/50 dark:bg-black/30"
               )}>
-                {/* Ribbon for top platform */}
-                {isTopPlatform && (
-                  <div className="relative">
-                    <div className="absolute -left-8 top-4 bg-primary text-white py-1 px-6 rotate-[-45deg] transform-gpu text-sm font-medium shadow-md">
-                      Beliebteste Singlebörse
-                    </div>
-                  </div>
-                )}
+                {/* Removed the "Beliebteste Singlebörse" badge as requested */}
                 
                 <div className="p-4 md:p-6 grid grid-cols-12 gap-4">
                   {/* Logo and rating section */}
@@ -76,7 +69,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                           />
                         ))}
                       </div>
-                      <div className="text-sm text-muted-foreground mt-1">/ 10</div>
+                      {/* Removed the "/10" text as requested */}
                     </div>
                   </div>
 
@@ -128,7 +121,8 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                         variant={isTopPlatform ? "default" : "outline"} 
                         size="lg"
                         className={cn(
-                          "w-full rounded-full font-medium text-base"
+                          "w-full rounded-full font-medium text-base",
+                          isTopPlatform && "shadow-[0_0_15px_rgba(244,63,94,0.5)] hover:shadow-[0_0_20px_rgba(244,63,94,0.7)]" // Add glow effect for LemonSwan button
                         )}
                       >
                         Singlebörse besuchen <ExternalLink className="ml-2 h-4 w-4" />
