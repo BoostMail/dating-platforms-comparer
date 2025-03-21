@@ -101,7 +101,7 @@ const Comparison = () => {
             <img 
               src="/lovable-uploads/088957b7-19d6-4fe7-ab75-dc6afcd021ec.png" 
               alt="Glückliches Paar 40+" 
-              className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-center'}`}
+              className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover object-center`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-between">
               {/* Mobile text - positioned at the top */}
@@ -119,24 +119,23 @@ const Comparison = () => {
                   <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance">
                     Die besten Plattformen für Singles 40+
                   </h2>
-                  
-                  {/* Desktop timestamp - only visible on desktop */}
-                  <div className="flex justify-start mt-4">
-                    <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
-                      <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
-                        <Clock className="mr-1 h-3 w-3" />
-                        <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               )}
               
               {/* Mobile timestamp - positioned at the bottom */}
-              {isMobile && (
+              {isMobile ? (
                 <div className="p-3 pb-4">
                   <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
                     <div className="flex items-center space-x-1 px-2 py-0.5 text-xs font-medium">
+                      <Clock className="mr-1 h-3 w-3" />
+                      <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="absolute bottom-4 left-4">
+                  <div className="inline-flex items-center rounded-full border border-white/20 p-1 text-white/80 bg-black/30">
+                    <div className="flex items-center space-x-1 px-3 py-1 text-xs font-medium">
                       <Clock className="mr-1 h-3 w-3" />
                       <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
                     </div>
