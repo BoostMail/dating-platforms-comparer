@@ -15,8 +15,11 @@ import {
   ThumbsUp
 } from 'lucide-react';
 import platforms from '@/utils/platformData';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
+  const isMobile = useIsMobile();
+  
   // Initialize animation observation when component mounts
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -89,42 +92,44 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Top ranking platform banner */}
-        <section className="section-container py-16">
-          <div className="flex justify-center my-10">
-            <div className="inline-flex items-center rounded-full border border-border p-1 text-muted-foreground bg-muted/30">
-              <div className="flex items-center space-x-1 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-primary shadow-sm dark:bg-black">
-                <Clock className="mr-1 h-3 w-3" />
-                <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
-              </div>
-              <div className="flex items-center space-x-1 rounded-full px-3 py-1.5 text-xs font-medium">
-                <ThumbsUp className="mr-1 h-3 w-3" />
-                <span>Von Experten geprüft</span>
+        {/* Top ranking platform banner - show only on mobile */}
+        {isMobile && (
+          <section className="section-container py-16">
+            <div className="flex justify-center my-10">
+              <div className="inline-flex items-center rounded-full border border-border p-1 text-muted-foreground bg-muted/30">
+                <div className="flex items-center space-x-1 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-primary shadow-sm dark:bg-black">
+                  <Clock className="mr-1 h-3 w-3" />
+                  <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' })}</span>
+                </div>
+                <div className="flex items-center space-x-1 rounded-full px-3 py-1.5 text-xs font-medium">
+                  <ThumbsUp className="mr-1 h-3 w-3" />
+                  <span>Von Experten geprüft</span>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div className="mb-6 bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800/50 text-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
-              <img src={platforms[0].logo} alt={platforms[0].name} className="h-12 object-contain" />
-              <div className="font-medium text-lg">10.000+ Nutzer haben {platforms[0].name} gewählt</div>
-              <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="shadow-md hover:shadow-lg transition-all duration-300 whitespace-nowrap">
-                  Zum Testsieger
+            
+            <div className="mb-6 bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800/50 text-center">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
+                <img src={platforms[0].logo} alt={platforms[0].name} className="h-12 object-contain" />
+                <div className="font-medium text-lg">10.000+ Nutzer haben {platforms[0].name} gewählt</div>
+                <a href={`https://${platforms[0].id}.de`} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="shadow-md hover:shadow-lg transition-all duration-300 whitespace-nowrap">
+                    Zum Testsieger
+                  </Button>
+                </a>
+              </div>
+            </div>
+            
+            <div className="text-center mt-10">
+              <Link to="/vergleich">
+                <Button variant="default" className="group">
+                  <span>Alle Plattformen vergleichen</span>
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
-              </a>
+              </Link>
             </div>
-          </div>
-          
-          <div className="text-center mt-10">
-            <Link to="/vergleich">
-              <Button variant="default" className="group">
-                <span>Alle Plattformen vergleichen</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </div>
-        </section>
+          </section>
+        )}
         
         {/* Testimonials Section - kept in Overview */}
         <TestimonialsSection />
