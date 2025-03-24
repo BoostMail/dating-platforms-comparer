@@ -154,20 +154,6 @@ const Comparison = () => {
           {/* Mobile CTA - moved directly below the platform list */}
           {isMobile && <CTASection />}
           
-          {/* Updated: Desktop view - changed to simple grid matching mobile version style */}
-          <div className="hidden md:block mt-16">
-            <h3 className="text-2xl font-semibold mb-6 text-center">Die besten Dating-Plattformen für 40+</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {platforms.slice(0, 3).map((platform, index) => (
-                <PlatformCard 
-                  key={platform.id} 
-                  platform={platform} 
-                  index={index} 
-                />
-              ))}
-            </div>
-          </div>
-          
           {/* Feature Comparison */}
           <section className="bg-muted/20 py-10 sm:py-16 mt-10 md:mt-16 rounded-xl">
             <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">

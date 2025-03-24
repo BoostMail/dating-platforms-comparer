@@ -131,19 +131,9 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
           })}
         </div>
       </ScrollArea>
-      
-      <div className="mt-4 px-4 py-3 bg-muted/20 rounded-lg text-xs text-muted-foreground flex flex-col sm:flex-row gap-2 sm:gap-0 sm:space-x-3">
-        <div className="flex items-center">
-          <CheckCircle className="h-3 w-3 mr-1" />
-          <span>Zuletzt aktualisiert: {new Date().toLocaleDateString('de-DE', { year: 'numeric', month: 'long' })}</span>
-        </div>
-        <div className="flex items-center">
-          <Info className="h-3 w-3 mr-1" />
-          <span>Von Experten geprüft für die beste Partnerwahl.</span>
-        </div>
-      </div>
     </AnimatedSection>
   );
 };
 
 export default ComparisonTable;
+
