@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -78,17 +77,6 @@ const Comparison = () => {
     </section>
   );
 
-  // Rearrange platforms for the grid display - putting winner in the middle
-  const getArrangedPlatforms = () => {
-    const sorted = [...platforms].sort((a, b) => b.rating - a.rating);
-    if (sorted.length >= 3) {
-      // Move the top platform to the middle (index 1)
-      const rearranged = [sorted[1], sorted[0], sorted[2]];
-      return rearranged;
-    }
-    return sorted;
-  };
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -106,7 +94,6 @@ const Comparison = () => {
                   ? 'object-right-top' 
                   : 'object-[center_10%]'
               }`}
-              // Adjusted to show 10% larger visible area and moved down 20%
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-between">
               {/* Mobile text - positioned at the top */}
@@ -167,20 +154,18 @@ const Comparison = () => {
           {/* Mobile CTA - moved directly below the platform list */}
           {isMobile && <CTASection />}
           
-          {/* Desktop view - top 3 platforms with winner in the middle */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-            {getArrangedPlatforms().map((platform, index) => {
-              // Index 1 is now our top platform (in the middle)
-              const isTopPlatform = platform.id === platforms[0].id;
-              return (
+          {/* Updated: Desktop view - changed to simple grid matching mobile version style */}
+          <div className="hidden md:block mt-16">
+            <h3 className="text-2xl font-semibold mb-6 text-center">Die besten Dating-Plattformen für 40+</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {platforms.slice(0, 3).map((platform, index) => (
                 <PlatformCard 
                   key={platform.id} 
                   platform={platform} 
-                  index={isTopPlatform ? 0 : index + 1} 
-                  className={isTopPlatform ? "transform-gpu md:scale-110 md:-mt-4 z-10" : "z-0"}
+                  index={index} 
                 />
-              );
-            })}
+              ))}
+            </div>
           </div>
           
           {/* Feature Comparison */}

@@ -1,10 +1,9 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ArrowRight, CheckCircle, Info, TrendingUp, Award, Users, ExternalLink } from 'lucide-react';
+import { Star, ArrowRight, CheckCircle, Info, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Tooltip,
@@ -40,8 +39,6 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                 "mb-4 rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-all duration-200",
                 isTopPlatform ? "bg-amber-50/50 dark:bg-amber-900/20" : "bg-white/50 dark:bg-black/30"
               )}>
-                {/* Removed all badges as requested */}
-                
                 <div className="p-4 md:p-6 grid grid-cols-12 gap-4">
                   {/* Logo and rating section */}
                   <div className="col-span-3 flex flex-col items-center justify-center">
@@ -121,8 +118,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                         size="lg"
                         className={cn(
                           "w-full rounded-full font-medium text-base",
-                          // Changed button to primary color instead of yellow with glow
-                          isTopPlatform && "shadow-[0_0_15px_rgba(244,63,94,0.5)] hover:shadow-[0_0_20px_rgba(244,63,94,0.7)]"
+                          isTopPlatform && "bg-primary hover:bg-primary/90 text-white shadow-[0_0_15px_rgba(244,63,94,0.5)] hover:shadow-[0_0_20px_rgba(244,63,94,0.7)]"
                         )}
                       >
                         Singlebörse besuchen <ExternalLink className="ml-2 h-4 w-4" />
