@@ -101,7 +101,12 @@ const Comparison = () => {
             <img 
               src="/lovable-uploads/088957b7-19d6-4fe7-ab75-dc6afcd021ec.png" 
               alt="Glückliches Paar 40+" 
-              className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-[center_20%]'}`}
+              className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${
+                isMobile 
+                  ? 'object-right-top' 
+                  : 'object-[center_10%]'
+              }`}
+              // Adjusted to show 10% larger visible area and moved down 20%
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-between">
               {/* Mobile text - positioned at the top */}

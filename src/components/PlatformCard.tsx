@@ -85,9 +85,9 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60",
         isTopPlatform && "shadow-lg border-primary/30 bg-white/60 dark:bg-black/60"
       )}>
-        {/* Ribbon for top platform */}
+        {/* Ribbon for top platform - improved readability */}
         {isTopPlatform && !isMobile && (
-          <div className="absolute -right-16 top-5 bg-primary text-white py-1 px-12 transform rotate-45 z-20 text-xs font-medium shadow-md">
+          <div className="absolute -right-16 top-5 bg-primary text-white py-1 px-12 transform rotate-45 z-20 text-sm font-bold shadow-md">
             Testsieger
           </div>
         )}
@@ -226,12 +226,13 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   className={cn(
                     "group relative overflow-hidden",
                     isTopPlatform && "shadow-md hover:shadow-lg",
-                    isTopPlatform && !isMobile && "bg-yellow-400 hover:bg-yellow-500 text-black border-yellow-500"
+                    // Changed from yellow to primary color (pink)
+                    isTopPlatform && !isMobile && "bg-primary hover:bg-primary/90 text-white border-primary/50"
                   )}
                 >
                   <span className={cn(
                     "relative z-10 transition-colors duration-300",
-                    isTopPlatform && !isMobile ? "text-black" : (
+                    isTopPlatform && !isMobile ? "text-white" : (
                       isTopPlatform ? "text-white" : "group-hover:text-white"
                     )
                   )}>
