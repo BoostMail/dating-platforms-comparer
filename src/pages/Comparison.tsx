@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -59,10 +60,10 @@ const Comparison = () => {
           <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-3 md:mb-4">
             Starten Sie noch heute
           </span>
-          <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
+          <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance leading-tight tracking-tight">
             Bereit, Ihr Liebesglück zu finden?
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 text-balance">
+          <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 text-balance max-w-2xl mx-auto leading-relaxed">
             Tausende Singles haben bereits ihren Partner gefunden. Sie könnten der Nächste sein!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -100,13 +101,13 @@ const Comparison = () => {
             <img 
               src="/lovable-uploads/088957b7-19d6-4fe7-ab75-dc6afcd021ec.png" 
               alt="Glückliches Paar 40+" 
-              className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-top'}`}
+              className={`w-full ${isMobile ? 'h-56' : 'h-96'} object-cover ${isMobile ? 'object-right-top' : 'object-[center_20%]'}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-between">
               {/* Mobile text - positioned at the top */}
               {isMobile && (
                 <div className="p-4 text-white w-full pt-4">
-                  <h2 className="font-serif text-2xl font-semibold text-balance">
+                  <h2 className="font-serif text-2xl font-semibold text-balance leading-tight tracking-tight">
                     Die besten Plattformen für Singles 40+
                   </h2>
                 </div>
@@ -115,7 +116,7 @@ const Comparison = () => {
               {/* Desktop text - positioned at the bottom */}
               {!isMobile && (
                 <div className="p-4 md:p-8 text-white w-full self-end">
-                  <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance">
+                  <h2 className="font-serif text-2xl md:text-4xl font-semibold text-balance leading-tight tracking-tight">
                     Die besten Plattformen für Singles 40+
                   </h2>
                 </div>
@@ -184,10 +185,10 @@ const Comparison = () => {
                 <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-3 md:mb-4">
                   Funktionsvergleich
                 </span>
-                <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
+                <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance leading-tight tracking-tight">
                   Was bieten die verschiedenen Plattformen?
                 </h2>
-                <p className="text-muted-foreground max-w-3xl mx-auto text-balance text-sm md:text-base">
+                <p className="text-muted-foreground max-w-3xl mx-auto text-balance text-sm md:text-base leading-relaxed">
                   Alle Dating-Plattformen sind unterschiedlich. Wir haben die wichtigsten Funktionen verglichen, damit Sie die richtige Wahl treffen können.
                 </p>
               </AnimatedSection>
@@ -202,10 +203,10 @@ const Comparison = () => {
               <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-3 md:mb-4">
                 Vorteile
               </span>
-              <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance">
+              <h2 className="font-serif text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-balance leading-tight tracking-tight">
                 Warum Online-Dating für 40+ Singles funktioniert
               </h2>
-              <p className="text-muted-foreground max-w-3xl mx-auto text-balance text-sm md:text-base">
+              <p className="text-muted-foreground max-w-3xl mx-auto text-balance text-sm md:text-base leading-relaxed">
                 Die digitale Partnersuche bietet gerade für Menschen über 40 viele Vorteile, die den Weg zu einer neuen Beziehung erleichtern können.
               </p>
             </AnimatedSection>
@@ -215,8 +216,8 @@ const Comparison = () => {
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Search className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-serif text-xl font-medium mb-3">Gezielte Partnersuche</h3>
-                <p className="text-muted-foreground">
+                <h3 className="font-serif text-xl font-medium mb-3 tracking-tight">Gezielte Partnersuche</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Spezialisierte Plattformen ermöglichen eine zielgerichtete Suche nach Partnern mit ähnlichen Interessen, Werten und Lebensvorstellungen.
                 </p>
               </AnimatedSection>
@@ -225,8 +226,8 @@ const Comparison = () => {
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <MessageCircle className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-serif text-xl font-medium mb-3">Unverbindliches Kennenlernen</h3>
-                <p className="text-muted-foreground">
+                <h3 className="font-serif text-xl font-medium mb-3 tracking-tight">Unverbindliches Kennenlernen</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   In Ihrem eigenen Tempo kommunizieren und erst dann persönlich treffen, wenn Sie sich wirklich bereit fühlen.
                 </p>
               </AnimatedSection>
@@ -235,8 +236,8 @@ const Comparison = () => {
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Users className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-serif text-xl font-medium mb-3">Große Auswahl</h3>
-                <p className="text-muted-foreground">
+                <h3 className="font-serif text-xl font-medium mb-3 tracking-tight">Große Auswahl</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Zugang zu tausenden potenziellen Partnern, die Sie im Alltag wahrscheinlich nie kennenlernen würden.
                 </p>
               </AnimatedSection>
@@ -245,8 +246,8 @@ const Comparison = () => {
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <ShieldCheck className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-serif text-xl font-medium mb-3">Sicherheit</h3>
-                <p className="text-muted-foreground">
+                <h3 className="font-serif text-xl font-medium mb-3 tracking-tight">Sicherheit</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Seriöse Plattformen bieten Sicherheitsfunktionen und verifizieren Profile, um ein geschütztes Umfeld zu schaffen.
                 </p>
               </AnimatedSection>
@@ -255,8 +256,8 @@ const Comparison = () => {
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <CheckCircle className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-serif text-xl font-medium mb-3">Kompatibilität</h3>
-                <p className="text-muted-foreground">
+                <h3 className="font-serif text-xl font-medium mb-3 tracking-tight">Kompatibilität</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Wissenschaftlich fundierte Matching-Algorithmen helfen, Partner mit ähnlichen Werten und Lebenszielen zu finden.
                 </p>
               </AnimatedSection>
@@ -265,8 +266,8 @@ const Comparison = () => {
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Heart className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-serif text-xl font-medium mb-3">Neue Chance</h3>
-                <p className="text-muted-foreground">
+                <h3 className="font-serif text-xl font-medium mb-3 tracking-tight">Neue Chance</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Nach Trennung oder Verlust bieten Dating-Plattformen einen sanften Wiedereinstieg ins Liebesleben mit Menschen in ähnlichen Lebenssituationen.
                 </p>
               </AnimatedSection>

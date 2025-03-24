@@ -37,19 +37,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection delay={100}>
-            <span className="inline-block px-3 py-1 mb-6 text-xs font-medium rounded-full bg-primary/10 text-primary normal-case">
+            <span className="inline-block px-3 py-1 mb-6 text-xs font-medium rounded-full bg-primary/20 text-primary normal-case">
               Dating-Plattformen für 40+ in Deutschland
             </span>
           </AnimatedSection>
           
           <AnimatedSection delay={200}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-balance leading-tight normal-case">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-balance leading-tight tracking-tight normal-case">
               {title}
             </h1>
           </AnimatedSection>
           
           <AnimatedSection delay={300}>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance normal-case">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance normal-case leading-relaxed">
               {subtitle}
             </p>
           </AnimatedSection>

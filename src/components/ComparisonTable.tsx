@@ -75,23 +75,23 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
 
                   {/* Platform details section */}
                   <div className="col-span-6">
-                    <h3 className="text-xl font-semibold mb-2">
+                    <h3 className="text-xl font-semibold mb-2 tracking-tight">
                       {platform.name} - {isTopPlatform ? "Der mit Abstand beste Anbieter im Test" : `Für ${platform.ageGroup.split('-')[0].trim()}+ Singles`}
                     </h3>
-                    <p className="text-muted-foreground mb-3">{platform.description.split('.')[0]}.</p>
+                    <p className="text-muted-foreground mb-3 leading-relaxed">{platform.description.split('.')[0]}.</p>
                     
                     <div className="space-y-2">
                       {platform.features.slice(0, 4).map((feature, idx) => (
                         <div key={idx} className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                          <span className="text-sm">{feature}</span>
+                          <span className="text-sm leading-tight">{feature}</span>
                         </div>
                       ))}
                       
                       {/* Additional feature with arrow */}
                       <div className="flex items-start">
                         <ArrowRight className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">Erhalten Sie täglich passende Partnervorschläge</span>
+                        <span className="text-sm leading-tight">Erhalten Sie täglich passende Partnervorschläge</span>
                       </div>
                     </div>
                     
@@ -108,7 +108,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                   <div className="col-span-3 flex flex-col items-center justify-between">
                     {isTopPlatform && (
                       <div className="bg-white dark:bg-black p-3 rounded-lg border border-green-200 dark:border-green-800 shadow-sm mb-4 w-full text-center">
-                        <p className="text-sm text-green-700 dark:text-green-400">
+                        <p className="text-sm text-green-700 dark:text-green-400 leading-tight">
                           Mehr als 400 Leute haben sich heute für diese Singlebörse entschieden!
                         </p>
                       </div>
@@ -118,11 +118,11 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ platforms }) => {
                     
                     <a href={`https://${platform.id}.de`} target="_blank" rel="noopener noreferrer" className="w-full">
                       <Button 
-                        variant={isTopPlatform ? "default" : "outline"} 
+                        variant="default"
                         size="lg"
                         className={cn(
                           "w-full rounded-full font-medium text-base",
-                          isTopPlatform && "shadow-[0_0_15px_rgba(244,63,94,0.5)] hover:shadow-[0_0_20px_rgba(244,63,94,0.7)]" // Add glow effect for LemonSwan button
+                          isTopPlatform && "shadow-[0_0_15px_rgba(244,63,94,0.5)] hover:shadow-[0_0_20px_rgba(244,63,94,0.7)]" // Add glow effect for top platform button
                         )}
                       >
                         Singlebörse besuchen <ExternalLink className="ml-2 h-4 w-4" />
