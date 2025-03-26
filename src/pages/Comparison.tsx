@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -141,7 +142,7 @@ const Comparison = () => {
           <ComparisonTable platforms={platforms} />
           
           {/* Mobile view - cards instead of table */}
-          <div className="md:hidden grid grid-cols-1 gap-4 mt-4">
+          <div className="md:hidden grid grid-cols-1 gap-6 mt-4 mb-10"> {/* Change: Increased gap from 4 to 6 for more space + increased bottom margin to 10 */}
             {platforms.map((platform, index) => (
               <PlatformCard 
                 key={platform.id} 

@@ -129,10 +129,11 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
               </div>
               <div>
                 <div className="flex items-center">
+                  {/* Change: Made brand names bigger on mobile */}
                   <h3 className={cn(
                     "font-medium text-lg",
                     isTopPlatform && "font-semibold text-primary",
-                    isMobile && "font-bold text-base"
+                    isMobile && "font-bold text-lg" // Increased from text-base to text-lg
                   )}>
                     {name}
                   </h3>
@@ -161,9 +162,10 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
 
           {variant === 'default' && (
             <>
+              {/* Change: Standardized text sizes to match LemonSwan listing */}
               <p className={cn(
                 "text-muted-foreground mb-3 text-sm line-clamp-2",
-                isMobile && isTopPlatform ? "text-sm font-medium mb-2" : (isMobile && "text-xs mb-2")
+                isMobile && "text-sm font-medium mb-2" // Made ALL platform descriptions text-sm (not just top platform)
               )}>
                 {getProcessedDescription()}
               </p>
@@ -174,15 +176,15 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
               )}>
                 <div className="flex items-center space-x-2">
                   <Users className={cn("w-4 h-4 text-muted-foreground", isMobile && "w-3.5 h-3.5")} />
-                  <span className={cn("text-xs text-muted-foreground", isMobile && "text-[11px]")}>{userCount}</span>
+                  <span className={cn("text-xs text-muted-foreground", isMobile && "text-xs")}>{userCount}</span> {/* Standardized to text-xs */}
                 </div>
                 <div className="flex items-center space-x-2">
                   <MessageCircle className={cn("w-4 h-4 text-muted-foreground", isMobile && "w-3.5 h-3.5")} />
-                  <span className={cn("text-xs text-muted-foreground", isMobile && "text-[11px]")}>{ageGroup}</span>
+                  <span className={cn("text-xs text-muted-foreground", isMobile && "text-xs")}>{ageGroup}</span> {/* Standardized to text-xs */}
                 </div>
               </div>
 
-              <div className={cn("mb-5", isMobile && "mb-3")}>
+              <div className={cn("mb-5", isMobile && "mb-4")}> {/* Change: Increased bottom margin for more space */}
                 <div className={cn(
                   "space-y-1.5", 
                   isMobile && "space-y-1"
@@ -190,15 +192,15 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   {features.slice(0, 3).map((feature, idx) => (
                     <div key={idx} className={cn(
                       "flex items-center text-sm",
-                      isMobile && isTopPlatform ? "text-sm" : (isMobile && "text-xs")
+                      isMobile && "text-sm" // Standardized text size for ALL platforms
                     )}>
                       <Check className={cn(
                         "h-3.5 w-3.5 text-primary mr-2", 
-                        isMobile && isTopPlatform ? "h-4 w-4 mr-2" : (isMobile && "h-3 w-3 mr-1.5")
+                        isMobile && "h-4 w-4 mr-2" // Consistent icon size
                       )} />
                       <span className={cn(
                         "text-muted-foreground text-xs",
-                        isMobile && isTopPlatform ? "text-sm" : (isMobile && "text-[11px]")
+                        isMobile && "text-sm" // Standardized text size for ALL platforms
                       )}>
                         {feature}
                       </span>
