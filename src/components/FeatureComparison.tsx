@@ -3,12 +3,6 @@ import React, { useState } from 'react';
 import { Check, X, ChevronRight, ChevronLeft } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { Platform } from './PlatformCard';
 import AnimatedSection from './AnimatedSection';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -109,12 +103,11 @@ const FeatureComparison: React.FC<FeatureComparisonProps> = ({ platforms }) => {
     if (!featureInfo) return <X className="h-5 w-5 text-destructive" />;
 
     // Special formatting for specific features
-    if (featureId === 'success_rate' || featureId === 'profile_quality' || featureId === 'cost_value') {
-      return (
-        <span className="font-medium">
-          {featureInfo.value}
-        </span>
-      );
+    if (featureId === 'success_rate') {
+      return <span className="font-medium">{featureInfo.value}</span>;
+    }
+    if (featureId === 'profile_quality' || featureId === 'cost_value') {
+      return <span className="font-medium">{featureInfo.value}</span>;
     }
 
     // For boolean values (true/false)

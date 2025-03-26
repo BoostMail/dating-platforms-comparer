@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Heart } from 'lucide-react';
@@ -40,37 +40,7 @@ export const Header = () => {
             <span className="text-xl font-medium normal-case">Singlebörsen<span className="text-primary">Test</span></span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <NavLink 
-              to="/" 
-              className={({ isActive }) => cn(
-                "text-sm font-medium transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
-                isActive ? "text-primary after:w-full" : "text-foreground/80 hover:text-foreground"
-              )}
-              end
-            >
-              Übersicht
-            </NavLink>
-            <NavLink 
-              to="/vergleich" 
-              className={({ isActive }) => cn(
-                "text-sm font-medium transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
-                isActive ? "text-primary after:w-full" : "text-foreground/80 hover:text-foreground"
-              )}
-            >
-              Vergleich
-            </NavLink>
-            <NavLink 
-              to="/ratgeber" 
-              className={({ isActive }) => cn(
-                "text-sm font-medium transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
-                isActive ? "text-primary after:w-full" : "text-foreground/80 hover:text-foreground"
-              )}
-            >
-              Ratgeber
-            </NavLink>
-          </nav>
+          {/* Desktop Navigation - Removed */}
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
@@ -111,7 +81,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Simplified without navigation */}
       <div 
         className={cn(
           "md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-40 transition-all duration-300 ease-in-out pt-20",
@@ -119,37 +89,6 @@ export const Header = () => {
         )}
       >
         <nav className="flex flex-col items-center space-y-6 p-8">
-          <NavLink 
-            to="/" 
-            className={({ isActive }) => cn(
-              "text-lg font-medium transition-all duration-200",
-              isActive ? "text-primary" : "text-foreground/80"
-            )}
-            onClick={closeMenu}
-            end
-          >
-            Übersicht
-          </NavLink>
-          <NavLink 
-            to="/vergleich" 
-            className={({ isActive }) => cn(
-              "text-lg font-medium transition-all duration-200",
-              isActive ? "text-primary" : "text-foreground/80"
-            )}
-            onClick={closeMenu}
-          >
-            Vergleich
-          </NavLink>
-          <NavLink 
-            to="/ratgeber" 
-            className={({ isActive }) => cn(
-              "text-lg font-medium transition-all duration-200",
-              isActive ? "text-primary" : "text-foreground/80"
-            )}
-            onClick={closeMenu}
-          >
-            Ratgeber
-          </NavLink>
           <Button 
             className="mt-6 w-full justify-center shadow-md"
             onClick={closeMenu}
