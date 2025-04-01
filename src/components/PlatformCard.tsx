@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Users, MessageCircle, ArrowRight, Award, Check, Info, ExternalLink } from 'lucide-react';
@@ -84,7 +85,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60",
         isTopPlatform && "shadow-lg border-primary/30 bg-white/60 dark:bg-black/60"
       )}>
-        {/* Changed: Horizontal badge for top platform - moved to top left corner and made part of the border */}
+        {/* Modified: Added more padding at the top of the card for the Testsieger badge when it's the top platform */}
         {isTopPlatform && (
           <div className="absolute top-0 left-0 z-20">
             <Badge variant="default" className="rounded-none rounded-br-md bg-primary text-white px-3 py-1 text-sm font-semibold">
@@ -94,7 +95,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           </div>
         )}
         
-        {/* Badge positioning - only show on desktop */}
+        {/* Badge positioning - only show on desktop for non-top platforms */}
         {badge && !isMobile && !isTopPlatform && (
           <div className="absolute -top-1 -right-1 z-10">
             <Badge className={cn(
@@ -111,7 +112,12 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/70 to-primary animate-pulse"></div>
         )}
 
-        <div className={cn("p-6", isMobile && "pt-3 pb-4 px-4")}>
+        <div className={cn(
+          "p-6", 
+          isMobile && "pt-3 pb-4 px-4",
+          // Add extra top padding for mobile top platform to make space for the badge
+          isTopPlatform && isMobile && "pt-8"
+        )}>
           {/* MOBILE VIEW: Modified layout for mobile */}
           {isMobile ? (
             <>
@@ -141,11 +147,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                     <span className="text-sm font-bold">{rating.toFixed(1)}</span>
                     <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                   </div>
-                  {isTopPlatform && (
-                    <Badge variant="outline" className="mt-1 bg-primary/10 text-primary border-primary/20 text-[10px]">
-                      <Award className="h-3 w-3 mr-1" /> Testsieger
-                    </Badge>
-                  )}
+                  {/* Removed the second Testsieger badge that was here */}
                 </div>
               </div>
               
