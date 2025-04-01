@@ -7,7 +7,6 @@ import { Heart } from 'lucide-react';
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +16,6 @@ export const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header 
@@ -34,68 +29,16 @@ export const Header = () => {
           <Link 
             to="/" 
             className="flex items-center space-x-2 transition-transform duration-300 hover:scale-105"
-            onClick={closeMenu}
           >
             <Heart className="h-6 w-6 text-primary" />
             <span className="text-xl font-medium normal-case">Singlebörsen<span className="text-primary">Test</span></span>
           </Link>
 
-          {/* Desktop Navigation - Removed */}
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="p-2 text-gray-600 dark:text-gray-300 focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <div className="relative w-6 h-5">
-                <span
-                  className={cn(
-                    "absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out",
-                    menuOpen ? "rotate-45 translate-y-2.5" : "translate-y-0"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out translate-y-2",
-                    menuOpen ? "opacity-0" : "opacity-100"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out",
-                    menuOpen ? "-rotate-45 translate-y-2.5" : "translate-y-4"
-                  )}
-                />
-              </div>
-            </button>
-          </div>
-
-          {/* CTA Button - Desktop Only, optimized for conversion */}
-          <div className="hidden md:block">
-            <Button size="sm" className="font-medium shadow-sm hover:shadow transition-all duration-300 hover:scale-105">
-              Zum Testsieger
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu - Simplified without navigation */}
-      <div 
-        className={cn(
-          "md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-40 transition-all duration-300 ease-in-out pt-20",
-          menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
-        )}
-      >
-        <nav className="flex flex-col items-center space-y-6 p-8">
-          <Button 
-            className="mt-6 w-full justify-center shadow-md"
-            onClick={closeMenu}
-          >
+          {/* CTA Button - For both mobile and desktop */}
+          <Button size="sm" className="font-medium shadow-sm hover:shadow transition-all duration-300 hover:scale-105">
             Zum Testsieger
           </Button>
-        </nav>
+        </div>
       </div>
     </header>
   );
