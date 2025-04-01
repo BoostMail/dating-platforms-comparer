@@ -116,15 +116,15 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           "p-6", 
           isMobile && "pt-3 pb-4 px-4",
           // Add extra top padding for mobile top platform to make space for the badge
-          isTopPlatform && isMobile && "pt-8"
+          isTopPlatform && isMobile && "pt-10"
         )}>
           {/* MOBILE VIEW: Modified layout for mobile */}
           {isMobile ? (
             <>
               <div className="flex items-start justify-between mb-3">
-                {/* Logo Section - Made longer and thinner */}
+                {/* Logo Section - Made taller with more vertical padding */}
                 <div className="flex flex-col">
-                  <div className="flex-shrink-0 w-32 h-12 bg-white overflow-hidden p-2 rounded-lg flex items-center justify-center border border-border">
+                  <div className="flex-shrink-0 w-32 h-14 bg-white overflow-hidden p-2.5 rounded-lg flex items-center justify-center border border-border">
                     <img 
                       src={logo} 
                       alt={`${name} Logo`} 
