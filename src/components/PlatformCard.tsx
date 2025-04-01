@@ -84,10 +84,10 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         "hover:shadow-md hover:border-primary/20 hover:bg-white/60 dark:hover:bg-black/60",
         isTopPlatform && "shadow-lg border-primary/30 bg-white/60 dark:bg-black/60"
       )}>
-        {/* Changed: Redesigned ribbon for better readability - horizontal instead of rotated */}
-        {isTopPlatform && !isMobile && (
-          <div className="absolute top-3 right-3 z-20">
-            <Badge variant="default" className="bg-primary text-white px-3 py-1 text-sm font-semibold shadow-md">
+        {/* Changed: Horizontal badge for top platform - moved to top left corner and made part of the border */}
+        {isTopPlatform && (
+          <div className="absolute top-0 left-0 z-20">
+            <Badge variant="default" className="rounded-none rounded-br-md bg-primary text-white px-3 py-1 text-sm font-semibold">
               <Award className="h-3.5 w-3.5 mr-1.5" />
               Testsieger
             </Badge>
@@ -116,9 +116,9 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
           {isMobile ? (
             <>
               <div className="flex items-start justify-between mb-3">
-                {/* Logo Section - Made rectangular instead of round */}
+                {/* Logo Section - Made longer and thinner */}
                 <div className="flex flex-col">
-                  <div className="flex-shrink-0 w-24 h-16 bg-white overflow-hidden p-2 rounded-lg flex items-center justify-center border border-border">
+                  <div className="flex-shrink-0 w-32 h-12 bg-white overflow-hidden p-2 rounded-lg flex items-center justify-center border border-border">
                     <img 
                       src={logo} 
                       alt={`${name} Logo`} 
@@ -126,9 +126,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                       loading="lazy"
                     />
                   </div>
-                  <h3 className="font-bold text-lg mt-1.5">
-                    {name}
-                  </h3>
+                  {/* Removed brand name as requested */}
                   {isTopPlatform && (
                     <div className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center mt-1 bg-emerald-100 dark:bg-emerald-900/30 rounded-full px-2 py-0.5">
                       <Users className="h-2.5 w-2.5 mr-1" />
@@ -137,7 +135,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                   )}
                 </div>
                 
-                {/* Rating section - Moved to top right */}
+                {/* Rating section - Kept at top right */}
                 <div className="flex flex-col items-end">
                   <div className="flex items-center space-x-1 bg-white shadow-sm border border-border rounded-md px-2 py-1">
                     <span className="text-sm font-bold">{rating.toFixed(1)}</span>
@@ -156,7 +154,7 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                 {getProcessedDescription()}
               </p>
               
-              {/* Feature list moved above user metrics */}
+              {/* Feature list - maintained above user metrics */}
               <div className="mb-4"> 
                 <div className="space-y-1">
                   {features.slice(0, 3).map((feature, idx) => (
@@ -168,8 +166,8 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
                 </div>
               </div>
               
-              {/* User metrics moved below feature list */}
-              <div className="grid grid-cols-2 gap-2 mb-3">
+              {/* User metrics - Moved age to right */}
+              <div className="flex justify-between items-center mb-3">
                 <div className="flex items-center space-x-2">
                   <Users className="w-3.5 h-3.5 text-muted-foreground" />
                   <span className="text-xs">{userCount}</span>

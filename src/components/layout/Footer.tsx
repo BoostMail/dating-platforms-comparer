@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="bg-secondary/50 pt-16 pb-8 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="md:col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-4">
               <Heart className="h-6 w-6 text-primary" />
               <span className="font-serif text-xl font-medium">Dating<span className="text-primary">Vergleich</span></span>
@@ -19,27 +19,6 @@ const Footer = () => {
             <div className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} DatingVergleich. Alle Rechte vorbehalten.
             </div>
-          </div>
-
-          <div>
-            <h3 className="font-medium text-sm tracking-wide uppercase mb-4">Navigation</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  Startseite
-                </Link>
-              </li>
-              <li>
-                <Link to="/vergleich" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  Vergleich
-                </Link>
-              </li>
-              <li>
-                <Link to="/ratgeber" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  Ratgeber
-                </Link>
-              </li>
-            </ul>
           </div>
 
           <div>
