@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Users, MessageCircle, ArrowRight, Award, Check, Info, ExternalLink } from 'lucide-react';
@@ -115,8 +114,8 @@ const PlatformCard: React.FC<PlatformCardProps> = ({
         <div className={cn(
           "p-6", 
           isMobile && "pt-3 pb-4 px-4",
-          // Add extra top padding for mobile top platform to make space for the badge
-          isTopPlatform && isMobile && "pt-10"
+          // Updated: Increased top padding for mobile top platform from pt-10 to pt-12
+          isTopPlatform && isMobile && "pt-12"
         )}>
           {/* MOBILE VIEW: Modified layout for mobile */}
           {isMobile ? (
