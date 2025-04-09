@@ -29,12 +29,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   children,
 }) => {
   return (
-    <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
+    <section className="relative pt-24 pb-24 md:pt-32 md:pb-40 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background z-0 pointer-events-none" />
       <div className="absolute inset-0 bg-grain opacity-30 pointer-events-none" />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:mt-4">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection delay={100}>
             <span className="inline-block px-3 py-1 mb-6 text-xs font-medium rounded-full bg-primary/20 text-primary">
